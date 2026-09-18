@@ -3,309 +3,217 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Dashboard · Advertix</title>
-<meta name="description" content="Advertix dashboard mockup — cross-platform ad performance at a glance." />
+<title>Dashboard &middot; Advertix</title>
+<meta name="description" content="Advertix dashboard mockup." />
 <link rel="stylesheet" href="assets/tokens.css" />
 <script>
-  /* Set the theme before first paint so the page never flashes the wrong one. */
+  /* Resolve the theme before first paint so the page never flashes. */
   (function () {
     try {
       var saved = localStorage.getItem("advertix-theme");
-      var theme = saved || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-      document.documentElement.setAttribute("data-theme", theme);
-    } catch (e) {
-      document.documentElement.setAttribute("data-theme", "light");
-    }
+      document.documentElement.setAttribute("data-theme",
+        saved || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"));
+    } catch (e) { document.documentElement.setAttribute("data-theme", "light"); }
   })();
 </script>
 </head>
 <body>
-<a class="skip-link" href="#main">Skip to dashboard</a>
+<a class="skip-link" href="#main">Skip to content</a>
 <div class="scrim" id="scrim" hidden></div>
 
 <div class="app">
-
-  <!-- ===================== Sidebar rail ===================== -->
   <aside class="rail" id="rail" aria-label="Main navigation">
     <div class="rail__brand">
       <span class="rail__mark" aria-hidden="true">A</span>
       <span class="rail__name">Advertix</span>
     </div>
-
     <div class="rail__scroll">
       <div class="rail__group">
-        <p class="rail__label" id="nav-manage">Manage</p>
-        <nav class="nav" aria-labelledby="nav-manage">
-          <a class="nav__item" href="dashboard.html" aria-current="page">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>
-            Dashboard
-          </a>
-          <span class="nav__item nav__item--todo" title="Campaigns mockup is not built yet">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l16-7-3 16-5-5-8-4z"/></svg>
-            Campaigns <span class="nav__soon">Soon</span>
-          </span>
-          <span class="nav__item nav__item--todo" title="Creatives mockup is not built yet">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M4 18l5-5 4 4 3-3 4 4"/></svg>
-            Creatives <span class="nav__soon">Soon</span>
-          </span>
-          <span class="nav__item nav__item--todo" title="Audiences mockup is not built yet">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="9" r="3"/><path d="M3 20a6 6 0 0112 0"/><path d="M16 4.5a3 3 0 010 9"/><path d="M18 20a5.6 5.6 0 00-2-4.3"/></svg>
-            Audiences <span class="nav__soon">Soon</span>
-          </span>
+        <p class="eyebrow rail__label" id="nav-operate">Operate</p>
+        <nav class="nav" aria-labelledby="nav-operate">
+          <a class="nav__item" href="dashboard.html" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3h7v7H3zM14 3h7v5h-7zM14 12h7v9h-7zM3 14h7v7H3z"/></svg>Dashboard</a>
+          <a class="nav__item" href="campaigns.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l16-7-3 16-5-5-8-4z"/></svg>Campaigns</a>
+          <span class="nav__item nav__item--todo" title="Ad sets is not mocked yet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/></svg>Ad sets</span>
+          <span class="nav__item nav__item--todo" title="Creatives is not mocked yet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M4 18l5-5 4 4 3-3 4 4"/></svg>Creatives</span>
+          <span class="nav__item nav__item--todo" title="Audiences is not mocked yet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="9" r="3"/><path d="M3 20a6 6 0 0112 0"/><path d="M16 4.5a3 3 0 010 9"/><path d="M18 20a5.6 5.6 0 00-2-4.3"/></svg>Audiences</span>
         </nav>
       </div>
-
       <div class="rail__group">
-        <p class="rail__label" id="nav-measure">Measure</p>
+        <p class="eyebrow rail__label" id="nav-measure">Measure</p>
         <nav class="nav" aria-labelledby="nav-measure">
-          <span class="nav__item nav__item--todo" title="Analytics mockup is not built yet">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>
-            Analytics <span class="nav__soon">Soon</span>
-          </span>
-          <span class="nav__item nav__item--todo" title="Insights mockup is not built yet">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l5-6 4 3 4-6 5 5"/><circle cx="8" cy="11" r="1.4"/><circle cx="16" cy="8" r="1.4"/></svg>
-            Insights <span class="nav__soon">Soon</span>
-          </span>
-          <span class="nav__item nav__item--todo" title="Reports &amp; exports mockup is not built yet">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg>
-            Reports <span class="nav__soon">Soon</span>
-          </span>
+          <span class="nav__item nav__item--todo" title="Analytics is not mocked yet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>Analytics</span>
+          <span class="nav__item nav__item--todo" title="Insights is not mocked yet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l5-6 4 3 4-6 5 5"/><circle cx="8" cy="11" r="1.4"/></svg>Insights</span>
+          <span class="nav__item nav__item--todo" title="Reports is not mocked yet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg>Reports</span>
         </nav>
       </div>
-
       <div class="rail__group">
-        <p class="rail__label" id="nav-automate">Automate</p>
+        <p class="eyebrow rail__label" id="nav-automate">Automate</p>
         <nav class="nav" aria-labelledby="nav-automate">
-          <span class="nav__item nav__item--todo" title="AI Planner mockup is not built yet">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.9 4.6L18.5 9.5 13.9 11.4 12 16l-1.9-4.6L5.5 9.5l4.6-1.9z"/><path d="M18 16l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8z"/></svg>
-            AI Planner <span class="nav__soon">Soon</span>
-          </span>
-          <span class="nav__item nav__item--todo" title="Budget Optimizer mockup is not built yet">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M9.5 9.5a2.5 2.5 0 012.5-2 2.4 2.4 0 012.4 1.6M14.5 14.5a2.5 2.5 0 01-2.5 2 2.4 2.4 0 01-2.4-1.6"/></svg>
-            Budget Optimizer <span class="nav__soon">Soon</span>
-          </span>
-          <span class="nav__item nav__item--todo" title="Automated Rules mockup is not built yet">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg>
-            Automated Rules <span class="nav__soon">Soon</span>
-          </span>
-          <span class="nav__item nav__item--todo" title="Alerts mockup is not built yet">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8a6 6 0 00-12 0c0 6-2 7-2 7h16s-2-1-2-7"/><path d="M10.5 20a2 2 0 003 0"/></svg>
-            Alerts <span class="nav__soon">Soon</span>
-          </span>
+          <span class="nav__item nav__item--todo" title="AI Planner is not mocked yet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.9 4.6L18.5 9.5 13.9 11.4 12 16l-1.9-4.6L5.5 9.5l4.6-1.9z"/><path d="M18 16l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8z"/></svg>AI Planner</span>
+          <span class="nav__item nav__item--todo" title="Budget Optimizer is not mocked yet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M9.5 9.5a2.5 2.5 0 012.5-2 2.4 2.4 0 012.4 1.6M14.5 14.5a2.5 2.5 0 01-2.5 2 2.4 2.4 0 01-2.4-1.6"/></svg>Budget Optimizer</span>
+          <span class="nav__item nav__item--todo" title="Rules is not mocked yet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg>Rules</span>
+          <span class="nav__item nav__item--todo" title="Alerts is not mocked yet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8a6 6 0 00-12 0c0 6-2 7-2 7h16s-2-1-2-7"/><path d="M10.5 20a2 2 0 003 0"/></svg>Alerts<span class="nav__count">3</span></span>
         </nav>
       </div>
-
       <div class="rail__group">
-        <p class="rail__label" id="nav-account">Account</p>
+        <p class="eyebrow rail__label" id="nav-account">Account</p>
         <nav class="nav" aria-labelledby="nav-account">
-          <span class="nav__item nav__item--todo" title="Integrations hub mockup is not built yet">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3v5M15 3v5M6 8h12v5a6 6 0 01-12 0z"/><path d="M12 19v2"/></svg>
-            Integrations <span class="nav__soon">Soon</span>
-          </span>
-          <span class="nav__item nav__item--todo" title="Billing mockup is not built yet">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18M7 15h4"/></svg>
-            Billing <span class="nav__soon">Soon</span>
-          </span>
-          <span class="nav__item nav__item--todo" title="Settings mockup is not built yet">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.6 1.6 0 00.3 1.8l.1.1a2 2 0 11-2.8 2.8l-.1-.1a1.6 1.6 0 00-2.7 1.1V21a2 2 0 11-4 0v-.1A1.6 1.6 0 007.5 19.4l-.1.1a2 2 0 11-2.8-2.8l.1-.1A1.6 1.6 0 003 15H3a2 2 0 110-4h.1A1.6 1.6 0 004.6 7.5l-.1-.1a2 2 0 112.8-2.8l.1.1A1.6 1.6 0 0010 3.6V3a2 2 0 114 0v.1a1.6 1.6 0 002.7 1.1l.1-.1a2 2 0 112.8 2.8l-.1.1A1.6 1.6 0 0021 11h.1a2 2 0 110 4H21"/></svg>
-            Settings <span class="nav__soon">Soon</span>
-          </span>
+          <span class="nav__item nav__item--todo" title="Integrations is not mocked yet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3v5M15 3v5M6 8h12v5a6 6 0 01-12 0z"/><path d="M12 19v2"/></svg>Integrations</span>
+          <span class="nav__item nav__item--todo" title="Billing is not mocked yet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18M7 15h4"/></svg>Billing</span>
+          <span class="nav__item nav__item--todo" title="Settings is not mocked yet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.6 1.6 0 00.3 1.8l.1.1a2 2 0 11-2.8 2.8l-.1-.1a1.6 1.6 0 00-2.7 1.1V21a2 2 0 11-4 0v-.1A1.6 1.6 0 007.5 19.4l-.1.1a2 2 0 11-2.8-2.8l.1-.1A1.6 1.6 0 003 15a2 2 0 110-4 1.6 1.6 0 001.6-2.6l-.1-.1a2 2 0 112.8-2.8l.1.1A1.6 1.6 0 0010 3.6V3a2 2 0 114 0v.6a1.6 1.6 0 002.7 1.1l.1-.1a2 2 0 112.8 2.8l-.1.1A1.6 1.6 0 0021 11a2 2 0 110 4z"/></svg>Settings</span>
         </nav>
       </div>
     </div>
-
     <div class="rail__foot">
-      <button class="acct" type="button" title="Northwind Outdoor Co. — switch workspace">
-        <span class="acct__avatar" aria-hidden="true">NO</span>
+      <button class="acct" type="button" title="Switch workspace">
+        <span class="avatar" aria-hidden="true">DW</span>
         <span style="min-width:0">
-          <span class="acct__name">Northwind Outdoor Co.</span>
-          <span class="acct__meta" id="acctMeta">4 ad accounts</span>
+          <span class="acct__name">Dana Whitfield</span>
+          <span class="acct__meta">Northwind Outdoor Co.</span>
         </span>
       </button>
     </div>
   </aside>
-
-  <!-- ===================== Main ===================== -->
   <div class="main">
-    <header class="topbar">
-      <button class="btn btn--icon hamburger" id="navToggle" type="button" aria-expanded="false" aria-controls="rail" aria-label="Open navigation">
+  <header class="topbar">
+      <button class="btn btn--icon btn--icon-bordered hamburger" id="navToggle" type="button"
+              aria-expanded="false" aria-controls="rail" aria-label="Open navigation">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
       </button>
 
-      <span class="badge badge--active topbar__status" id="syncStatus" title="All four ad accounts are syncing normally">All platforms syncing</span>
+      <div class="omnibox">
+        <svg class="omnibox__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+        <label class="visually-hidden" for="omni">Search campaigns, ad sets, creatives and audiences</label>
+        <input id="omni" type="search" placeholder="Search campaigns, creatives, audiences" />
+        <span class="kbd" aria-hidden="true">&#8984;K</span>
+      </div>
 
       <span class="topbar__spacer"></span>
-
-      <label class="visually-hidden" for="stateSelect">Preview page state — mockup control</label>
-      <select class="select" id="stateSelect" title="Mockup control — preview the dashboard's loading, empty and error states">
+      <label class="visually-hidden" for="stateSelect">Preview page state &mdash; mockup control</label>
+      <select class="select select--sm" id="stateSelect" style="width:auto"
+              title="Mockup control - preview the dashboard's loading, empty and error states">
         <option value="ready" selected>Live data</option>
         <option value="loading">Loading</option>
         <option value="empty">Empty</option>
         <option value="error">Error</option>
       </select>
 
+      <button class="btn btn--icon bell" type="button" aria-label="Notifications, 3 unread" title="Notifications">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8a6 6 0 00-12 0c0 6-2 7-2 7h16s-2-1-2-7"/><path d="M10.5 20a2 2 0 003 0"/></svg>
+        <span class="bell__dot" aria-hidden="true">3</span>
+      </button>
+
       <button class="btn btn--icon" id="themeToggle" type="button" aria-label="Switch to dark theme" title="Switch theme">
-        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4"/></svg>
-        <svg class="icon-moon hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 019.5 4a8.5 8.5 0 1010.5 10.5z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4"/></svg>
+        <svg class="icon-moon hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 019.5 4a8.5 8.5 0 1010.5 10.5z"/></svg>
       </button>
 
-      <button class="btn btn--primary" id="createCampaign" type="button" aria-label="Create campaign">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
-        <span class="btn__label">Create campaign</span>
-      </button>
+      <span class="avatar" title="Dana Whitfield" aria-hidden="true">DW</span>
     </header>
-
     <main class="page" id="main">
-      <div class="page__head">
+      <div class="pagehead">
         <div>
-          <h1>Dashboard</h1>
-          <p class="u-muted">Meta, Google, TikTok and LinkedIn — one view, one set of numbers.</p>
+          <h1>Thursday, 18 September</h1>
+          <p class="pagehead__meta" id="headMeta">23 campaigns live &middot; $1,975 spent so far today &middot; 3 things need a decision</p>
         </div>
-        <div class="row-2">
-          <span class="u-small u-faint" id="syncedAt">Synced 4 minutes ago</span>
-          <button class="btn btn--icon" id="refreshBtn" type="button" aria-label="Refresh data" title="Refresh data">
+        <div class="pagehead__actions">
+          <div class="seg" role="group" aria-label="Metric focus">
+            <button class="seg__btn" type="button" aria-pressed="true">Operations</button>
+            <button class="seg__btn" type="button" aria-pressed="false" data-say="Revenue view is not mocked yet">Revenue</button>
+          </div>
+          <label class="visually-hidden" for="range">Date range</label>
+          <select class="select select--sm" id="range" style="width:auto">
+            <option>Last 7 days</option><option selected>Month to date</option><option>Last 30 days</option><option>Quarter to date</option>
+          </select>
+          <button class="btn btn--icon btn--icon-bordered" id="refreshBtn" type="button" aria-label="Refresh data" title="Refresh data">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11a8 8 0 10-2.3 6.3"/><path d="M20 5v6h-6"/></svg>
           </button>
-          <label class="visually-hidden" for="rangeSelect">Date range</label>
-          <select class="select" id="rangeSelect">
-            <option>Last 7 days</option>
-            <option selected>Last 30 days</option>
-            <option>Last 90 days</option>
-            <option>Year to date</option>
-          </select>
         </div>
       </div>
 
-      <!-- ===================== READY ===================== -->
-      <div id="view-ready" class="stack-4">
+      <div class="tabs" role="tablist" aria-label="Dashboard sections">
+        <button class="tab" role="tab" aria-selected="true"  aria-controls="p-ov"   id="t-ov"   type="button">Overview</button>
+        <button class="tab" role="tab" aria-selected="false" aria-controls="p-attn" id="t-attn" type="button" tabindex="-1">Needs attention <span class="tab__count">6</span></button>
+        <button class="tab" role="tab" aria-selected="false" aria-controls="p-act"  id="t-act"  type="button" tabindex="-1">Activity</button>
+      </div>
 
-        <!-- KPI row -->
-        <section aria-labelledby="kpi-h">
-          <h2 class="visually-hidden" id="kpi-h">Headline metrics, last 30 days</h2>
-          <div class="kpis">
+      <!-- ===== Overview ===== -->
+      <div id="p-ov" role="tabpanel" aria-labelledby="t-ov">
 
-            <article class="card kpi">
-              <p class="kpi__label">Ad spend</p>
-              <p class="kpi__value">$48,920</p>
-              <div class="kpi__foot">
-                <span class="stack-2">
-                  <span class="delta delta--good"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg>12.4%</span>
-                  <span class="kpi__vs">vs previous 30 days</span>
-                </span>
-                <svg class="spark" viewBox="0 0 104 30" role="img" aria-label="Daily ad spend trending up over the last 12 weeks">
-                  <polyline class="spark__base" points="4.0,26.0 12.7,23.9 21.5,25.4 30.2,21.8 38.9,19.9 47.6,21.2 56.4,17.3 65.1,15.7 73.8,16.7 82.5,12.2 91.3,8.3 100.0,4.0"/>
-                  <polyline class="spark__tail" points="82.5,12.2 91.3,8.3 100.0,4.0"/>
-                  <circle class="spark__dot" cx="100.0" cy="4.0" r="3"/>
-                </svg>
-              </div>
-            </article>
-
-            <article class="card kpi">
-              <p class="kpi__label">Revenue</p>
-              <p class="kpi__value">$200,572</p>
-              <div class="kpi__foot">
-                <span class="stack-2">
-                  <span class="delta delta--good"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg>18.1%</span>
-                  <span class="kpi__vs">vs previous 30 days</span>
-                </span>
-                <svg class="spark" viewBox="0 0 104 30" role="img" aria-label="Attributed revenue trending up over the last 12 weeks">
-                  <polyline class="spark__base" points="4.0,26.0 12.7,24.2 21.5,25.2 30.2,21.5 38.9,19.5 47.6,20.6 56.4,16.8 65.1,15.2 73.8,16.1 82.5,11.4 91.3,8.4 100.0,4.0"/>
-                  <polyline class="spark__tail" points="82.5,11.4 91.3,8.4 100.0,4.0"/>
-                  <circle class="spark__dot" cx="100.0" cy="4.0" r="3"/>
-                </svg>
-              </div>
-            </article>
-
-            <article class="card kpi">
-              <p class="kpi__label">Blended ROAS</p>
-              <p class="kpi__value">4.10x</p>
-              <div class="kpi__foot">
-                <span class="stack-2">
-                  <span class="delta delta--good"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg>0.32x</span>
-                  <span class="kpi__vs">vs previous 30 days</span>
-                </span>
-                <svg class="spark" viewBox="0 0 104 30" role="img" aria-label="Blended return on ad spend trending up over the last 12 weeks">
-                  <polyline class="spark__base" points="4.0,26.0 12.7,25.1 21.5,23.2 30.2,16.8 38.9,14.1 47.6,14.1 56.4,10.4 65.1,9.5 73.8,9.5 82.5,4.0 91.3,6.7 100.0,4.0"/>
-                  <polyline class="spark__tail" points="82.5,4.0 91.3,6.7 100.0,4.0"/>
-                  <circle class="spark__dot" cx="100.0" cy="4.0" r="3"/>
-                </svg>
-              </div>
-            </article>
-
-            <article class="card kpi">
-              <p class="kpi__label">Conversions</p>
-              <p class="kpi__value">2,847</p>
-              <div class="kpi__foot">
-                <span class="stack-2">
-                  <span class="delta delta--good"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg>9.6%</span>
-                  <span class="kpi__vs">vs previous 30 days</span>
-                </span>
-                <svg class="spark" viewBox="0 0 104 30" role="img" aria-label="Conversions trending up over the last 12 weeks">
-                  <polyline class="spark__base" points="4.0,26.0 12.7,23.8 21.5,24.9 30.2,21.6 38.9,19.4 47.6,20.5 56.4,16.6 65.1,14.4 73.8,15.6 82.5,10.6 91.3,7.3 100.0,4.0"/>
-                  <polyline class="spark__tail" points="82.5,10.6 91.3,7.3 100.0,4.0"/>
-                  <circle class="spark__dot" cx="100.0" cy="4.0" r="3"/>
-                </svg>
-              </div>
-            </article>
-
-            <article class="card kpi">
-              <p class="kpi__label">Cost per conversion</p>
-              <p class="kpi__value">$17.18</p>
-              <div class="kpi__foot">
-                <span class="stack-2">
-                  <span class="delta delta--good"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg>4.2%</span>
-                  <span class="kpi__vs">cheaper than last period</span>
-                </span>
-                <svg class="spark" viewBox="0 0 104 30" role="img" aria-label="Cost per conversion trending down over the last 12 weeks">
-                  <polyline class="spark__base" points="4.0,4.0 12.7,7.9 21.5,5.3 30.2,10.5 38.9,14.4 47.6,13.1 56.4,16.9 65.1,19.5 73.8,18.2 82.5,22.1 91.3,23.4 100.0,26.0"/>
-                  <polyline class="spark__tail" points="82.5,22.1 91.3,23.4 100.0,26.0"/>
-                  <circle class="spark__dot" cx="100.0" cy="26.0" r="3"/>
-                </svg>
-              </div>
-            </article>
-
-            <article class="card kpi">
-              <p class="kpi__label">Click-through rate</p>
-              <p class="kpi__value">2.61%</p>
-              <div class="kpi__foot">
-                <span class="stack-2">
-                  <span class="delta delta--good"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg>0.18 pp</span>
-                  <span class="kpi__vs">vs previous 30 days</span>
-                </span>
-                <svg class="spark" viewBox="0 0 104 30" role="img" aria-label="Click-through rate trending up over the last 12 weeks">
-                  <polyline class="spark__base" points="4.0,26.0 12.7,23.0 21.5,25.0 30.2,20.0 38.9,16.0 47.6,18.0 56.4,13.0 65.1,10.0 73.8,12.0 82.5,7.0 91.3,4.0 100.0,6.0"/>
-                  <polyline class="spark__tail" points="82.5,7.0 91.3,4.0 100.0,6.0"/>
-                  <circle class="spark__dot" cx="100.0" cy="6.0" r="3"/>
-                </svg>
-              </div>
-            </article>
-
-          </div>
-        </section>
-
-        <div class="grid-2">
-
-          <!-- Spend vs conversions — two panels on a shared time axis.
-               Deliberately NOT a dual-axis chart: dollars and counts do not
-               share a scale, so each measure keeps its own panel and its own
-               y-axis, and the crosshair reads both at once. -->
-          <section class="card" aria-labelledby="trend-h">
+        <div id="view-ready" class="stack-4">
+          <section class="card" aria-labelledby="attn-h">
             <div class="card__head">
               <div>
-                <h2 class="card__title" id="trend-h">Spend vs conversions</h2>
-                <p class="card__sub">Daily, last 14 days · all platforms</p>
+                <h2 class="card__title" id="attn-h">Needs your attention</h2>
+                <p class="card__sub">The three that stop delivery soonest</p>
               </div>
-              <div class="legend" aria-hidden="true">
-                <span class="legend__item"><span class="legend__key legend__key--1"></span>Spend</span>
-                <span class="legend__item"><span class="legend__key legend__key--2"></span>Conversions</span>
-              </div>
+              <button class="btn btn--ghost" id="seeAllAttn" type="button">View all 6 &rsaquo;</button>
             </div>
+              <div class="attn__row">
+                <span class="attn__tag"><span class="pill pill--risk">2 campaigns</span></span>
+                <span class="attn__body">
+                  <span class="attn__title">Pacing over budget</span>
+                  <span class="attn__desc">Winter Preview at 129% and Retargeting at 112% &mdash; both exhaust their budget before month end</span>
+                </span>
+                <a class="attn__go" href="#" data-say="Opening the two over-pacing campaigns" role="button">Review pacing <span aria-hidden="true">&rsaquo;</span></a>
+              </div>
+              <div class="attn__row">
+                <span class="attn__tag"><span class="pill pill--warn">3 days</span></span>
+                <span class="attn__body">
+                  <span class="attn__title">Meta ad account needs reauthorisation</span>
+                  <span class="attn__desc">The access token for act_418822907 expires Sep 21. Delivery stops when it does.</span>
+                </span>
+                <a class="attn__go" href="#" data-say="Opening the Meta reconnect flow" role="button">Reconnect <span aria-hidden="true">&rsaquo;</span></a>
+              </div>
+              <div class="attn__row">
+                <span class="attn__tag"><span class="pill pill--review">5 ads</span></span>
+                <span class="attn__body">
+                  <span class="attn__title">Creative rejected by Google</span>
+                  <span class="attn__desc">Policy: unsupported claim, on Shopping &mdash; Trail Footwear. Oldest rejection is 4 days old.</span>
+                </span>
+                <a class="attn__go" href="#" data-say="Opening the 5 rejected ads" role="button">Fix creative <span aria-hidden="true">&rsaquo;</span></a>
+              </div>
+          </section>
 
-            <div class="card__body">
+          <section class="stats" aria-label="Headline metrics">
+          <div class="stat">
+            <p class="stat__label">Ad spend, month to date</p>
+            <p class="stat__value">$48,920</p>
+            <p class="stat__foot"><span class="delta delta--good"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg>12.4%</span><span>vs August</span></p>
+          </div>
+          <div class="stat">
+            <p class="stat__label">Attributed revenue</p>
+            <p class="stat__value">$200,572</p>
+            <p class="stat__foot"><span class="delta delta--good"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg>18.1%</span><span>vs August</span></p>
+          </div>
+          <div class="stat">
+            <p class="stat__label">Blended ROAS</p>
+            <p class="stat__value">4.10x</p>
+            <p class="stat__foot"><span class="delta delta--good"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg>0.32x</span><span>vs August</span></p>
+          </div>
+          <div class="stat">
+            <p class="stat__label">Campaigns over pacing</p>
+            <p class="stat__value stat__value--risk">2</p>
+            <p class="stat__foot"><span>projected past budget this month</span></p>
+          </div>
+          </section>
+
+          <div class="split--wide split">
+            <section class="card" aria-labelledby="trend-h">
+              <div class="card__head">
+                <div>
+                  <h2 class="card__title" id="trend-h">Spend vs conversions</h2>
+                  <p class="card__sub">Daily, last 14 days &middot; all platforms</p>
+                </div>
+                <div class="legend" aria-hidden="true">
+                  <span class="legend__item"><span class="legend__key legend__key--1"></span>Spend</span>
+                  <span class="legend__item"><span class="legend__key legend__key--2"></span>Conversions</span>
+                </div>
+              </div>
+              <div class="card__body">
               <div class="chart-scroll" id="chartScroll">
                 <svg class="chart" id="trendChart" viewBox="-14 0 734 330" role="img"
-                     aria-label="Two stacked panels sharing a 14-day axis. Ad spend rises from $1,412 on 5 September to a peak of $2,218 on 17 September, easing to $1,975 on 18 September. Conversions track it, from 79 to a peak of 134 and then 118. Exact values are in the data table below the chart.">
-                  <!-- Panel A — spend -->
+                     aria-label="Two panels on a shared 14-day axis. Ad spend climbs from $1,412 on 5 September to $2,218 on 17 September, easing to $1,975. Conversions track it from 79 to 134 and then 118. Exact figures are in the data table below.">
                   <text class="panel-text" x="0" y="14">Ad spend</text>
                   <line class="grid-line" x1="54" y1="30" x2="706" y2="30"/>
                   <line class="grid-line" x1="54" y1="75.3" x2="706" y2="75.3"/>
@@ -315,40 +223,7 @@
                   <text class="axis-text" x="44" y="80.3" text-anchor="end">$1,600</text>
                   <text class="axis-text" x="44" y="125.7" text-anchor="end">$800</text>
                   <text class="axis-text" x="44" y="171" text-anchor="end">$0</text>
-
-                  <g class="cols">
-                    <rect class="col" x="66.3" y="86.0" width="22" height="80.0" rx="4"/>
-                    <rect class="col" x="112.9" y="79.0" width="22" height="87.0" rx="4"/>
-                    <rect class="col" x="159.4" y="92.4" width="22" height="73.6" rx="4"/>
-                    <rect class="col" x="206.0" y="69.4" width="22" height="96.6" rx="4"/>
-                    <rect class="col" x="252.6" y="60.5" width="22" height="105.5" rx="4"/>
-                    <rect class="col" x="299.1" y="67.1" width="22" height="98.9" rx="4"/>
-                    <rect class="col" x="345.7" y="75.9" width="22" height="90.1" rx="4"/>
-                    <rect class="col" x="392.3" y="57.3" width="22" height="108.7" rx="4"/>
-                    <rect class="col" x="438.9" y="50.1" width="22" height="115.9" rx="4"/>
-                    <rect class="col" x="485.4" y="62.1" width="22" height="103.9" rx="4"/>
-                    <rect class="col" x="532.0" y="71.3" width="22" height="94.7" rx="4"/>
-                    <rect class="col" x="578.6" y="46.8" width="22" height="119.2" rx="4"/>
-                    <rect class="col" x="625.1" y="40.3" width="22" height="125.7" rx="4"/>
-                    <rect class="col" x="671.7" y="54.1" width="22" height="111.9" rx="4"/>
-                    <!-- Square the baseline: the rounded end belongs to the data, not the axis. -->
-                    <rect class="col" x="66.3" y="160" width="22" height="6"/>
-                    <rect class="col" x="112.9" y="160" width="22" height="6"/>
-                    <rect class="col" x="159.4" y="160" width="22" height="6"/>
-                    <rect class="col" x="206.0" y="160" width="22" height="6"/>
-                    <rect class="col" x="252.6" y="160" width="22" height="6"/>
-                    <rect class="col" x="299.1" y="160" width="22" height="6"/>
-                    <rect class="col" x="345.7" y="160" width="22" height="6"/>
-                    <rect class="col" x="392.3" y="160" width="22" height="6"/>
-                    <rect class="col" x="438.9" y="160" width="22" height="6"/>
-                    <rect class="col" x="485.4" y="160" width="22" height="6"/>
-                    <rect class="col" x="532.0" y="160" width="22" height="6"/>
-                    <rect class="col" x="578.6" y="160" width="22" height="6"/>
-                    <rect class="col" x="625.1" y="160" width="22" height="6"/>
-                    <rect class="col" x="671.7" y="160" width="22" height="6"/>
-                  </g>
-
-                  <!-- Panel B — conversions -->
+                  <g><rect class="col" x="66.3" y="86.0" width="22" height="80.0" rx="4"/><rect class="col" x="66.3" y="160" width="22" height="6"/><rect class="col" x="112.9" y="79.0" width="22" height="87.0" rx="4"/><rect class="col" x="112.9" y="160" width="22" height="6"/><rect class="col" x="159.4" y="92.4" width="22" height="73.6" rx="4"/><rect class="col" x="159.4" y="160" width="22" height="6"/><rect class="col" x="206.0" y="69.4" width="22" height="96.6" rx="4"/><rect class="col" x="206.0" y="160" width="22" height="6"/><rect class="col" x="252.6" y="60.5" width="22" height="105.5" rx="4"/><rect class="col" x="252.6" y="160" width="22" height="6"/><rect class="col" x="299.1" y="67.1" width="22" height="98.9" rx="4"/><rect class="col" x="299.1" y="160" width="22" height="6"/><rect class="col" x="345.7" y="75.9" width="22" height="90.1" rx="4"/><rect class="col" x="345.7" y="160" width="22" height="6"/><rect class="col" x="392.3" y="57.3" width="22" height="108.7" rx="4"/><rect class="col" x="392.3" y="160" width="22" height="6"/><rect class="col" x="438.9" y="50.1" width="22" height="115.9" rx="4"/><rect class="col" x="438.9" y="160" width="22" height="6"/><rect class="col" x="485.4" y="62.1" width="22" height="103.9" rx="4"/><rect class="col" x="485.4" y="160" width="22" height="6"/><rect class="col" x="532.0" y="71.3" width="22" height="94.7" rx="4"/><rect class="col" x="532.0" y="160" width="22" height="6"/><rect class="col" x="578.6" y="46.8" width="22" height="119.2" rx="4"/><rect class="col" x="578.6" y="160" width="22" height="6"/><rect class="col" x="625.1" y="40.3" width="22" height="125.7" rx="4"/><rect class="col" x="625.1" y="160" width="22" height="6"/><rect class="col" x="671.7" y="54.1" width="22" height="111.9" rx="4"/><rect class="col" x="671.7" y="160" width="22" height="6"/></g>
                   <text class="panel-text" x="0" y="192">Conversions</text>
                   <line class="grid-line" x1="54" y1="206" x2="706" y2="206"/>
                   <line class="grid-line" x1="54" y1="251" x2="706" y2="251"/>
@@ -356,97 +231,56 @@
                   <text class="axis-text" x="44" y="211" text-anchor="end">150</text>
                   <text class="axis-text" x="44" y="256" text-anchor="end">75</text>
                   <text class="axis-text" x="44" y="301" text-anchor="end">0</text>
-
                   <path class="area" d="M 77.3 296.0 L 77.3 248.6 L 123.9 243.2 L 170.4 253.4 L 217.0 238.4 L 263.6 231.2 L 310.1 235.4 L 356.7 240.8 L 403.3 227.6 L 449.9 223.4 L 496.4 232.4 L 543.0 236.6 L 589.6 219.2 L 636.1 215.6 L 682.7 225.2 L 682.7 296.0 Z"/>
                   <path class="line" d="M 77.3 248.6 L 123.9 243.2 L 170.4 253.4 L 217.0 238.4 L 263.6 231.2 L 310.1 235.4 L 356.7 240.8 L 403.3 227.6 L 449.9 223.4 L 496.4 232.4 L 543.0 236.6 L 589.6 219.2 L 636.1 215.6 L 682.7 225.2"/>
                   <circle class="enddot" cx="682.7" cy="225.2" r="4.5"/>
-
-                  <!-- Shared x-axis, labelled every third day so nothing collides -->
-                  <text class="axis-text" x="77.3" y="320" text-anchor="middle">Sep 5</text>
+                  <text class="axis-text" x="77.3"  y="320" text-anchor="middle">Sep 5</text>
                   <text class="axis-text" x="217.0" y="320" text-anchor="middle">Sep 8</text>
                   <text class="axis-text" x="356.7" y="320" text-anchor="middle">Sep 11</text>
                   <text class="axis-text" x="496.4" y="320" text-anchor="middle">Sep 14</text>
                   <text class="axis-text" x="682.7" y="320" text-anchor="middle">Sep 18</text>
-
-                  <!-- Hover layer -->
                   <line class="crosshair" id="crosshair" x1="0" y1="24" x2="0" y2="298"/>
                   <circle class="focusdot focusdot--spend" id="focusSpend" r="4.5"/>
                   <circle class="focusdot focusdot--conv" id="focusConv" r="4.5"/>
-                  <g id="hits">
-                    <rect class="hit" x="54.0" y="24" width="46.57" height="274" data-cx="77.3" data-date="Fri 5 Sep" data-spend="1412" data-conv="79" data-ay="86.0" data-by="248.6"/>
-                    <rect class="hit" x="100.6" y="24" width="46.57" height="274" data-cx="123.9" data-date="Sat 6 Sep" data-spend="1536" data-conv="88" data-ay="79.0" data-by="243.2"/>
-                    <rect class="hit" x="147.1" y="24" width="46.57" height="274" data-cx="170.4" data-date="Sun 7 Sep" data-spend="1298" data-conv="71" data-ay="92.4" data-by="253.4"/>
-                    <rect class="hit" x="193.7" y="24" width="46.57" height="274" data-cx="217.0" data-date="Mon 8 Sep" data-spend="1704" data-conv="96" data-ay="69.4" data-by="238.4"/>
-                    <rect class="hit" x="240.3" y="24" width="46.57" height="274" data-cx="263.6" data-date="Tue 9 Sep" data-spend="1862" data-conv="108" data-ay="60.5" data-by="231.2"/>
-                    <rect class="hit" x="286.9" y="24" width="46.57" height="274" data-cx="310.1" data-date="Wed 10 Sep" data-spend="1745" data-conv="101" data-ay="67.1" data-by="235.4"/>
-                    <rect class="hit" x="333.4" y="24" width="46.57" height="274" data-cx="356.7" data-date="Thu 11 Sep" data-spend="1590" data-conv="92" data-ay="75.9" data-by="240.8"/>
-                    <rect class="hit" x="380.0" y="24" width="46.57" height="274" data-cx="403.3" data-date="Fri 12 Sep" data-spend="1918" data-conv="114" data-ay="57.3" data-by="227.6"/>
-                    <rect class="hit" x="426.6" y="24" width="46.57" height="274" data-cx="449.9" data-date="Sat 13 Sep" data-spend="2046" data-conv="121" data-ay="50.1" data-by="223.4"/>
-                    <rect class="hit" x="473.1" y="24" width="46.57" height="274" data-cx="496.4" data-date="Sun 14 Sep" data-spend="1833" data-conv="106" data-ay="62.1" data-by="232.4"/>
-                    <rect class="hit" x="519.7" y="24" width="46.57" height="274" data-cx="543.0" data-date="Mon 15 Sep" data-spend="1672" data-conv="99" data-ay="71.3" data-by="236.6"/>
-                    <rect class="hit" x="566.3" y="24" width="46.57" height="274" data-cx="589.6" data-date="Tue 16 Sep" data-spend="2104" data-conv="128" data-ay="46.8" data-by="219.2"/>
-                    <rect class="hit" x="612.9" y="24" width="46.57" height="274" data-cx="636.1" data-date="Wed 17 Sep" data-spend="2218" data-conv="134" data-ay="40.3" data-by="215.6"/>
-                    <rect class="hit" x="659.4" y="24" width="46.57" height="274" data-cx="682.7" data-date="Thu 18 Sep" data-spend="1975" data-conv="118" data-ay="54.1" data-by="225.2"/>
-                  </g>
+                  <g id="hits"><rect class="hit" x="54.0" y="24" width="46.57" height="274" data-cx="77.3" data-date="Fri 5 Sep" data-spend="1412" data-conv="79" data-ay="86.0" data-by="248.6"/><rect class="hit" x="100.6" y="24" width="46.57" height="274" data-cx="123.9" data-date="Sat 6 Sep" data-spend="1536" data-conv="88" data-ay="79.0" data-by="243.2"/><rect class="hit" x="147.1" y="24" width="46.57" height="274" data-cx="170.4" data-date="Sun 7 Sep" data-spend="1298" data-conv="71" data-ay="92.4" data-by="253.4"/><rect class="hit" x="193.7" y="24" width="46.57" height="274" data-cx="217.0" data-date="Mon 8 Sep" data-spend="1704" data-conv="96" data-ay="69.4" data-by="238.4"/><rect class="hit" x="240.3" y="24" width="46.57" height="274" data-cx="263.6" data-date="Tue 9 Sep" data-spend="1862" data-conv="108" data-ay="60.5" data-by="231.2"/><rect class="hit" x="286.9" y="24" width="46.57" height="274" data-cx="310.1" data-date="Wed 10 Sep" data-spend="1745" data-conv="101" data-ay="67.1" data-by="235.4"/><rect class="hit" x="333.4" y="24" width="46.57" height="274" data-cx="356.7" data-date="Thu 11 Sep" data-spend="1590" data-conv="92" data-ay="75.9" data-by="240.8"/><rect class="hit" x="380.0" y="24" width="46.57" height="274" data-cx="403.3" data-date="Fri 12 Sep" data-spend="1918" data-conv="114" data-ay="57.3" data-by="227.6"/><rect class="hit" x="426.6" y="24" width="46.57" height="274" data-cx="449.9" data-date="Sat 13 Sep" data-spend="2046" data-conv="121" data-ay="50.1" data-by="223.4"/><rect class="hit" x="473.1" y="24" width="46.57" height="274" data-cx="496.4" data-date="Sun 14 Sep" data-spend="1833" data-conv="106" data-ay="62.1" data-by="232.4"/><rect class="hit" x="519.7" y="24" width="46.57" height="274" data-cx="543.0" data-date="Mon 15 Sep" data-spend="1672" data-conv="99" data-ay="71.3" data-by="236.6"/><rect class="hit" x="566.3" y="24" width="46.57" height="274" data-cx="589.6" data-date="Tue 16 Sep" data-spend="2104" data-conv="128" data-ay="46.8" data-by="219.2"/><rect class="hit" x="612.9" y="24" width="46.57" height="274" data-cx="636.1" data-date="Wed 17 Sep" data-spend="2218" data-conv="134" data-ay="40.3" data-by="215.6"/><rect class="hit" x="659.4" y="24" width="46.57" height="274" data-cx="682.7" data-date="Thu 18 Sep" data-spend="1975" data-conv="118" data-ay="54.1" data-by="225.2"/></g>
                 </svg>
                 <div class="tip" id="tip" role="status" aria-live="polite"></div>
               </div>
-            </div>
-
-            <div class="card__foot">
-              <span>14 days · $24,913 spent · 1,455 conversions · $17.12 average cost per conversion</span>
-              <button class="btn btn--ghost" id="tableToggle" type="button" aria-expanded="false" aria-controls="trendTable">Show data table</button>
-            </div>
-
-            <div class="tablewrap hidden" id="trendTable">
-              <table class="table" style="min-width:420px">
-                <caption class="visually-hidden">Daily spend and conversions, 5 to 18 September</caption>
-                <thead>
-                  <tr><th scope="col">Day</th><th scope="col" class="num">Spend</th><th scope="col" class="num">Conversions</th><th scope="col" class="num">Cost per conversion</th></tr>
-                </thead>
-                <tbody>
-                  <tr><th scope="row">Fri 5 Sep</th><td class="num">$1,412</td><td class="num">79</td><td class="num">$17.87</td></tr>
-                  <tr><th scope="row">Sat 6 Sep</th><td class="num">$1,536</td><td class="num">88</td><td class="num">$17.45</td></tr>
-                  <tr><th scope="row">Sun 7 Sep</th><td class="num">$1,298</td><td class="num">71</td><td class="num">$18.28</td></tr>
-                  <tr><th scope="row">Mon 8 Sep</th><td class="num">$1,704</td><td class="num">96</td><td class="num">$17.75</td></tr>
-                  <tr><th scope="row">Tue 9 Sep</th><td class="num">$1,862</td><td class="num">108</td><td class="num">$17.24</td></tr>
-                  <tr><th scope="row">Wed 10 Sep</th><td class="num">$1,745</td><td class="num">101</td><td class="num">$17.28</td></tr>
-                  <tr><th scope="row">Thu 11 Sep</th><td class="num">$1,590</td><td class="num">92</td><td class="num">$17.28</td></tr>
-                  <tr><th scope="row">Fri 12 Sep</th><td class="num">$1,918</td><td class="num">114</td><td class="num">$16.82</td></tr>
-                  <tr><th scope="row">Sat 13 Sep</th><td class="num">$2,046</td><td class="num">121</td><td class="num">$16.91</td></tr>
-                  <tr><th scope="row">Sun 14 Sep</th><td class="num">$1,833</td><td class="num">106</td><td class="num">$17.29</td></tr>
-                  <tr><th scope="row">Mon 15 Sep</th><td class="num">$1,672</td><td class="num">99</td><td class="num">$16.89</td></tr>
-                  <tr><th scope="row">Tue 16 Sep</th><td class="num">$2,104</td><td class="num">128</td><td class="num">$16.44</td></tr>
-                  <tr><th scope="row">Wed 17 Sep</th><td class="num">$2,218</td><td class="num">134</td><td class="num">$16.55</td></tr>
-                  <tr><th scope="row">Thu 18 Sep</th><td class="num">$1,975</td><td class="num">118</td><td class="num">$16.74</td></tr>
-                </tbody>
-              </table>
-            </div>
-          </section>
-
-          <!-- Spend by platform — nominal categories, so one hue and a direct
-               label per row. The brand colour rides the identity dot only. -->
-          <section class="card" aria-labelledby="plat-h">
-            <div class="card__head">
-              <div>
-                <h2 class="card__title" id="plat-h">Spend by platform</h2>
-                <p class="card__sub">Last 30 days</p>
               </div>
-            </div>
-            <div class="card__body">
-              <div class="hbars">
+              <div class="card__foot">
+                <span>$24,913 spent &middot; 1,455 conversions &middot; $17.12 average cost per conversion</span>
+                <button class="btn btn--ghost" id="tableToggle" type="button" aria-expanded="false" aria-controls="trendTable">Show data table</button>
+              </div>
+              <div class="tablewrap hidden" id="trendTable">
+                <table class="table" style="min-width:420px">
+                  <caption class="visually-hidden">Daily spend and conversions, 5 to 18 September</caption>
+                  <thead><tr><th scope="col">Day</th><th scope="col" class="num">Spend</th><th scope="col" class="num">Conversions</th><th scope="col" class="num">Cost per conv.</th></tr></thead>
+                  <tbody><tr><th scope="row">Fri 5 Sep</th><td class="num">$1,412</td><td class="num">79</td><td class="num">$17.87</td></tr><tr><th scope="row">Sat 6 Sep</th><td class="num">$1,536</td><td class="num">88</td><td class="num">$17.45</td></tr><tr><th scope="row">Sun 7 Sep</th><td class="num">$1,298</td><td class="num">71</td><td class="num">$18.28</td></tr><tr><th scope="row">Mon 8 Sep</th><td class="num">$1,704</td><td class="num">96</td><td class="num">$17.75</td></tr><tr><th scope="row">Tue 9 Sep</th><td class="num">$1,862</td><td class="num">108</td><td class="num">$17.24</td></tr><tr><th scope="row">Wed 10 Sep</th><td class="num">$1,745</td><td class="num">101</td><td class="num">$17.28</td></tr><tr><th scope="row">Thu 11 Sep</th><td class="num">$1,590</td><td class="num">92</td><td class="num">$17.28</td></tr><tr><th scope="row">Fri 12 Sep</th><td class="num">$1,918</td><td class="num">114</td><td class="num">$16.82</td></tr><tr><th scope="row">Sat 13 Sep</th><td class="num">$2,046</td><td class="num">121</td><td class="num">$16.91</td></tr><tr><th scope="row">Sun 14 Sep</th><td class="num">$1,833</td><td class="num">106</td><td class="num">$17.29</td></tr><tr><th scope="row">Mon 15 Sep</th><td class="num">$1,672</td><td class="num">99</td><td class="num">$16.89</td></tr><tr><th scope="row">Tue 16 Sep</th><td class="num">$2,104</td><td class="num">128</td><td class="num">$16.44</td></tr><tr><th scope="row">Wed 17 Sep</th><td class="num">$2,218</td><td class="num">134</td><td class="num">$16.55</td></tr><tr><th scope="row">Thu 18 Sep</th><td class="num">$1,975</td><td class="num">118</td><td class="num">$16.74</td></tr></tbody>
+                </table>
+              </div>
+            </section>
+
+            <section class="card" aria-labelledby="plat-h">
+              <div class="card__head">
+                <div>
+                  <h2 class="card__title" id="plat-h">Spend by platform</h2>
+                  <p class="card__sub">Month to date</p>
+                </div>
+              </div>
+              <div class="card__body">
+                <div class="hbars">
                 <div>
                   <div class="hbar__top">
                     <span class="plat"><span class="plat__dot plat__dot--meta" aria-hidden="true"></span>Meta</span>
-                    <span class="hbar__val">$21,514 · 44.0%</span>
+                    <span class="hbar__val">$21,514 &middot; 44.0%</span>
                   </div>
-                  <div class="hbar__track"><div class="hbar__fill" style="width:100%"></div></div>
+                  <div class="hbar__track"><div class="hbar__fill" style="width:100.0%"></div></div>
                   <p class="hbar__meta"><span>4.32x ROAS</span><span>1,317 conversions</span><span>$16.34 CPA</span></p>
                 </div>
                 <div>
                   <div class="hbar__top">
                     <span class="plat"><span class="plat__dot plat__dot--google" aria-hidden="true"></span>Google</span>
-                    <span class="hbar__val">$14,187 · 29.0%</span>
+                    <span class="hbar__val">$14,187 &middot; 29.0%</span>
                   </div>
                   <div class="hbar__track"><div class="hbar__fill" style="width:65.9%"></div></div>
                   <p class="hbar__meta"><span>4.20x ROAS</span><span>884 conversions</span><span>$16.05 CPA</span></p>
@@ -454,7 +288,7 @@
                 <div>
                   <div class="hbar__top">
                     <span class="plat"><span class="plat__dot plat__dot--tiktok" aria-hidden="true"></span>TikTok</span>
-                    <span class="hbar__val">$7,827 · 16.0%</span>
+                    <span class="hbar__val">$7,827 &middot; 16.0%</span>
                   </div>
                   <div class="hbar__track"><div class="hbar__fill" style="width:36.4%"></div></div>
                   <p class="hbar__meta"><span>3.71x ROAS</span><span>371 conversions</span><span>$21.10 CPA</span></p>
@@ -462,284 +296,307 @@
                 <div>
                   <div class="hbar__top">
                     <span class="plat"><span class="plat__dot plat__dot--linkedin" aria-hidden="true"></span>LinkedIn</span>
-                    <span class="hbar__val">$5,392 · 11.0%</span>
+                    <span class="hbar__val">$5,392 &middot; 11.0%</span>
                   </div>
                   <div class="hbar__track"><div class="hbar__fill" style="width:25.0%"></div></div>
                   <p class="hbar__meta"><span>3.54x ROAS</span><span>275 conversions</span><span>$19.61 CPA</span></p>
                 </div>
+                </div>
+              </div>
+              <div class="card__foot"><span>$48,920 spent &middot; $200,572 attributed revenue</span></div>
+            </section>
+          </div>
+
+          <section class="card" aria-labelledby="ai-h" id="aiPanel">
+            <div class="card__head">
+              <div>
+                <div class="row-2">
+                  <h2 class="card__title" id="ai-h">Move $600 a day into retargeting</h2>
+                  <span class="pill pill--ai">AI Planner</span>
+                </div>
+                <p class="card__sub">High confidence &middot; found 2 hours ago &middot; re-checked every 6 hours</p>
+              </div>
+              <span class="card__action">Projected over the next 14 days</span>
+            </div>
+            <div class="card__body stack-4">
+              <p class="u-muted u-small">Performance Max &mdash; Outerwear has held a 3.38x ROAS for nine days, while Retargeting &mdash; Cart Abandoners 14d is budget-capped at 6.08x and losing impression share every evening. Shifting spend across lifts blended ROAS without raising the total budget.</p>
+              <div class="tablewrap">
+                <table class="table" style="min-width:520px">
+                  <caption class="visually-hidden">Proposed budget moves</caption>
+                  <thead><tr><th scope="col" class="col-name">Campaign</th><th scope="col">Platform</th><th scope="col" class="num">Daily change</th><th scope="col" class="num">Current ROAS</th></tr></thead>
+                  <tbody>
+                    <tr><td><span class="cell"><span class="cell__main">Performance Max &mdash; Outerwear</span></span></td><td><span class="plat"><span class="plat__dot plat__dot--google" aria-hidden="true"></span>Google</span></td><td class="num">&minus;$420</td><td class="num">3.38x</td></tr>
+                    <tr><td><span class="cell"><span class="cell__main">Creator Seeding &mdash; Q3 Hiking</span></span></td><td><span class="plat"><span class="plat__dot plat__dot--tiktok" aria-hidden="true"></span>TikTok</span></td><td class="num">&minus;$180</td><td class="num">2.94x</td></tr>
+                    <tr><td><span class="cell"><span class="cell__main">Retargeting &mdash; Cart Abandoners 14d</span></span></td><td><span class="plat"><span class="plat__dot plat__dot--meta" aria-hidden="true"></span>Meta</span></td><td class="num">+$600</td><td class="num">6.08x</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="stats" style="border-radius:var(--r-control)">
+                <div class="stat"><p class="stat__label">Blended ROAS</p><p class="stat__value" style="font-size:var(--fs-h2)">4.10x &rarr; 4.32x</p></div>
+                <div class="stat"><p class="stat__label">Conversions</p><p class="stat__value" style="font-size:var(--fs-h2)">+78</p></div>
+                <div class="stat"><p class="stat__label">Added revenue</p><p class="stat__value" style="font-size:var(--fs-h2)">+$5,481</p></div>
+                <div class="stat"><p class="stat__label">Total spend</p><p class="stat__value" style="font-size:var(--fs-h2)">Unchanged</p></div>
               </div>
             </div>
             <div class="card__foot">
-              <span>$48,920 total · $200,572 attributed revenue</span>
+              <span>Modelled on 90 days of account history, assuming 18% efficiency decay as retargeting scales.</span>
+              <span class="row-2">
+                <button class="btn btn--ghost" id="dismissPlan" type="button">Dismiss</button>
+                <button class="btn btn--default" id="applyPlan" type="button">Apply plan</button>
+              </span>
+            </div>
+          </section>
+
+          <section class="card" aria-labelledby="top-h">
+            <div class="card__head">
+              <div><h2 class="card__title" id="top-h">Top campaigns</h2><p class="card__sub">By spend, month to date</p></div>
+              <a class="card__action" href="campaigns.html">View all 23 &rsaquo;</a>
+            </div>
+            <div class="tablewrap">
+              <table class="table" style="min-width:920px">
+                <caption class="visually-hidden">Top five campaigns by spend</caption>
+                <thead><tr>
+                  <th scope="col" class="col-name">Campaign</th><th scope="col">Platform</th><th scope="col">Status</th>
+                  <th scope="col" class="num">Spend</th><th scope="col" class="num">Conv.</th><th scope="col" class="num">CPA</th>
+                  <th scope="col" class="num">ROAS</th><th scope="col" class="num">vs prev.</th>
+                  <th class="col-actions" scope="col"><span class="visually-hidden">Actions</span></th>
+                </tr></thead>
+                <tbody>
+              <tr>
+                <td><span class="cell"><a class="cell__main" href="campaign-detail.html">Fall Trail Collection &mdash; Prospecting</a><span class="cell__sub">Conversions &middot; Aug 12</span></span></td>
+                <td><span class="plat"><span class="plat__dot plat__dot--meta" aria-hidden="true"></span>Meta</span></td>
+                <td><span class="pill pill--live">Live</span></td>
+                <td class="num">$8,942</td><td class="num">528</td><td class="num">$16.94</td><td class="num">4.61x</td>
+                <td class="num"><span class="delta delta--good"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg>0.41x</span></td>
+                <td class="col-actions"><button class="btn btn--icon" type="button" data-menu="dm0" aria-haspopup="true" aria-expanded="false" aria-label="Campaign actions"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="5" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="12" cy="19" r="1.6"/></svg></button></td>
+              </tr>
+              <tr>
+                <td><span class="cell"><a class="cell__main" href="campaign-detail.html">Search &mdash; Branded Terms (Exact)</a><span class="cell__sub">Search &middot; Jan 4</span></span></td>
+                <td><span class="plat"><span class="plat__dot plat__dot--google" aria-hidden="true"></span>Google</span></td>
+                <td><span class="pill pill--live">Live</span></td>
+                <td class="num">$6,318</td><td class="num">471</td><td class="num">$13.41</td><td class="num">5.12x</td>
+                <td class="num"><span class="delta delta--good"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg>0.18x</span></td>
+                <td class="col-actions"><button class="btn btn--icon" type="button" data-menu="dm1" aria-haspopup="true" aria-expanded="false" aria-label="Campaign actions"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="5" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="12" cy="19" r="1.6"/></svg></button></td>
+              </tr>
+              <tr>
+                <td><span class="cell"><a class="cell__main" href="campaign-detail.html">Retargeting &mdash; Cart Abandoners 14d</a><span class="cell__sub">Conversions &middot; Mar 2</span></span></td>
+                <td><span class="plat"><span class="plat__dot plat__dot--meta" aria-hidden="true"></span>Meta</span></td>
+                <td><span class="pill pill--live">Live</span></td>
+                <td class="num">$4,706</td><td class="num">402</td><td class="num">$11.71</td><td class="num">6.08x</td>
+                <td class="num"><span class="delta delta--good"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg>0.94x</span></td>
+                <td class="col-actions"><button class="btn btn--icon" type="button" data-menu="dm2" aria-haspopup="true" aria-expanded="false" aria-label="Campaign actions"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="5" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="12" cy="19" r="1.6"/></svg></button></td>
+              </tr>
+              <tr>
+                <td><span class="cell"><a class="cell__main" href="campaign-detail.html">Creator Seeding &mdash; Q3 Hiking</a><span class="cell__sub">Awareness &middot; Jul 28</span></span></td>
+                <td><span class="plat"><span class="plat__dot plat__dot--tiktok" aria-hidden="true"></span>TikTok</span></td>
+                <td><span class="pill pill--learning">Learning</span></td>
+                <td class="num">$3,180</td><td class="num">138</td><td class="num">$23.04</td><td class="num">2.94x</td>
+                <td class="num"><span class="delta delta--bad"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg>0.22x</span></td>
+                <td class="col-actions"><button class="btn btn--icon" type="button" data-menu="dm3" aria-haspopup="true" aria-expanded="false" aria-label="Campaign actions"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="5" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="12" cy="19" r="1.6"/></svg></button></td>
+              </tr>
+              <tr>
+                <td><span class="cell"><a class="cell__main" href="campaign-detail.html">Performance Max &mdash; Outerwear</a><span class="cell__sub">Sales &middot; Feb 19</span></span></td>
+                <td><span class="plat"><span class="plat__dot plat__dot--google" aria-hidden="true"></span>Google</span></td>
+                <td><span class="pill pill--paused">Paused</span></td>
+                <td class="num">$2,864</td><td class="num">149</td><td class="num">$19.22</td><td class="num">3.38x</td>
+                <td class="num"><span class="delta delta--bad"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg>0.57x</span></td>
+                <td class="col-actions"><button class="btn btn--icon" type="button" data-menu="dm4" aria-haspopup="true" aria-expanded="false" aria-label="Campaign actions"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="5" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="12" cy="19" r="1.6"/></svg></button></td>
+              </tr>
+                </tbody>
+              </table>
             </div>
           </section>
         </div>
 
-        <!-- AI Planner suggestion -->
-        <section class="card ai-panel" aria-labelledby="ai-h" id="aiPanel">
+        <!-- Loading -->
+        <div id="view-loading" class="stack-4 hidden" aria-busy="true" aria-live="polite">
+          <p class="visually-hidden">Loading your dashboard.</p>
+          <section class="card"><div class="card__body stack-3">
+            <span class="skel skel--text" style="width:32%"></span>
+            <span class="skel skel--text"></span><span class="skel skel--text" style="width:78%"></span>
+          </div></section>
+          <section class="stats">
+            <div class="stat"><span class="skel skel--text" style="width:60%"></span><p style="margin-top:8px"><span class="skel skel--metric" style="display:block;width:72%"></span></p></div>
+            <div class="stat"><span class="skel skel--text" style="width:52%"></span><p style="margin-top:8px"><span class="skel skel--metric" style="display:block;width:80%"></span></p></div>
+            <div class="stat"><span class="skel skel--text" style="width:56%"></span><p style="margin-top:8px"><span class="skel skel--metric" style="display:block;width:54%"></span></p></div>
+            <div class="stat"><span class="skel skel--text" style="width:64%"></span><p style="margin-top:8px"><span class="skel skel--metric" style="display:block;width:40%"></span></p></div>
+          </section>
+          <div class="split--wide split">
+            <section class="card"><div class="card__body"><span class="skel skel--chart"></span></div></section>
+            <section class="card"><div class="card__body stack-4">
+              <div class="stack-2"><span class="skel skel--text" style="width:70%"></span><span class="skel" style="height:10px"></span></div>
+              <div class="stack-2"><span class="skel skel--text" style="width:60%"></span><span class="skel" style="height:10px;width:66%"></span></div>
+              <div class="stack-2"><span class="skel skel--text" style="width:54%"></span><span class="skel" style="height:10px;width:36%"></span></div>
+              <div class="stack-2"><span class="skel skel--text" style="width:58%"></span><span class="skel" style="height:10px;width:25%"></span></div>
+            </div></section>
+          </div>
+        </div>
+
+        <!-- Empty -->
+        <div id="view-empty" class="hidden">
+          <section class="card"><div class="card__body"><div class="empty">
+            <span class="empty__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3v5M15 3v5M6 8h12v5a6 6 0 01-12 0z"/><path d="M12 19v2"/></svg></span>
+            <h2 class="card__title">No ad accounts connected yet</h2>
+            <p>Connect Meta, Google, TikTok or LinkedIn and Advertix pulls the last 90 days of spend, conversions and creative performance. The first sync usually finishes in under two minutes.</p>
+            <div class="empty__actions">
+              <button class="btn btn--primary btn--lg" id="connectAccount" type="button">Connect an ad account</button>
+              <button class="btn btn--default btn--lg" type="button" data-say="Opening the CSV importer">Import a CSV instead</button>
+            </div>
+            <p class="u-small u-faint">Advertix requests read and campaign-management scopes only. You can revoke access at any time.</p>
+          </div></div></section>
+        </div>
+
+        <!-- Error -->
+        <div id="view-error" class="hidden">
+          <section class="card"><div class="card__body"><div class="errorstate">
+            <span class="errorstate__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8v5M12 16.5v.01"/><path d="M10.3 3.9L2.5 17a2 2 0 001.7 3h15.6a2 2 0 001.7-3L13.7 3.9a2 2 0 00-3.4 0z"/></svg></span>
+            <h2 class="card__title">We couldn't load your Meta numbers</h2>
+            <p>Meta is rate-limiting this ad account, so the totals here would be wrong &mdash; we would rather show you nothing than the wrong number. Google, TikTok and LinkedIn synced normally at 09:42.</p>
+            <p class="errorcode">Meta Marketing API &middot; error 613 &middot; act_418822907 &middot; 09:47</p>
+            <div class="errorstate__actions">
+              <button class="btn btn--primary btn--lg" id="retryBtn" type="button">Try again</button>
+              <button class="btn btn--default btn--lg" id="copyError" type="button">Copy error details</button>
+            </div>
+            <p class="u-small u-faint">Advertix retries on its own every 5 minutes. Meta usually lifts a 613 within the hour.</p>
+          </div></div></section>
+        </div>
+      </div>
+
+      <!-- ===== Needs attention ===== -->
+      <div id="p-attn" role="tabpanel" aria-labelledby="t-attn" class="hidden">
+        <section class="card">
           <div class="card__head">
-            <div class="ai-panel__head">
-              <span class="ai-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 4.6L18.5 9.5 13.9 11.4 12 16l-1.9-4.6L5.5 9.5l4.6-1.9z"/><path d="M18 16l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8z"/></svg>
-              </span>
-              <div>
-                <h2 class="card__title" id="ai-h">Move $600 a day into retargeting</h2>
-                <p class="card__sub">AI Planner · high confidence · found 2 hours ago</p>
-              </div>
-              <span class="badge badge--ai">AI suggestion</span>
-            </div>
+            <div><h2 class="card__title">6 items need a decision</h2><p class="card__sub">Ordered by what stops delivery soonest</p></div>
+            <span class="card__action">Oldest is 4 days old</span>
           </div>
-
-          <div class="card__body stack-4">
-            <p class="u-muted">
-              Performance Max — Outerwear has held a 3.38x ROAS for nine days while
-              Retargeting — Cart Abandoners 14d is budget-capped at 6.08x and losing
-              impression share every evening. Shifting spend across lifts blended ROAS
-              without raising the total budget.
-            </p>
-
-            <ul class="movelist">
-              <li><span class="plat"><span class="plat__dot plat__dot--google" aria-hidden="true"></span>Google</span><strong>Performance Max — Outerwear</strong><span style="margin-left:auto">&minus;$420/day</span></li>
-              <li><span class="plat"><span class="plat__dot plat__dot--tiktok" aria-hidden="true"></span>TikTok</span><strong>Creator Seeding — Q3 Hiking</strong><span style="margin-left:auto">&minus;$180/day</span></li>
-              <li><span class="plat"><span class="plat__dot plat__dot--meta" aria-hidden="true"></span>Meta</span><strong>Retargeting — Cart Abandoners 14d</strong><span style="margin-left:auto">+$600/day</span></li>
-            </ul>
-
-            <div class="projgrid">
-              <div>
-                <p class="proj__label">Blended ROAS</p>
-                <p class="proj__value">4.10x &rarr; 4.32x</p>
+              <div class="attn__row">
+                <span class="attn__tag"><span class="pill pill--risk">2 campaigns</span></span>
+                <span class="attn__body">
+                  <span class="attn__title">Pacing over budget</span>
+                  <span class="attn__desc">Winter Preview at 129% and Retargeting at 112% &mdash; both exhaust their budget before month end</span>
+                </span>
+                <a class="attn__go" href="#" data-say="Opening the two over-pacing campaigns" role="button">Review pacing <span aria-hidden="true">&rsaquo;</span></a>
               </div>
-              <div>
-                <p class="proj__label">Conversions</p>
-                <p class="proj__value">+78</p>
+              <div class="attn__row">
+                <span class="attn__tag"><span class="pill pill--warn">3 days</span></span>
+                <span class="attn__body">
+                  <span class="attn__title">Meta ad account needs reauthorisation</span>
+                  <span class="attn__desc">The access token for act_418822907 expires Sep 21. Delivery stops when it does.</span>
+                </span>
+                <a class="attn__go" href="#" data-say="Opening the Meta reconnect flow" role="button">Reconnect <span aria-hidden="true">&rsaquo;</span></a>
               </div>
-              <div>
-                <p class="proj__label">Added revenue</p>
-                <p class="proj__value">+$5,481</p>
+              <div class="attn__row">
+                <span class="attn__tag"><span class="pill pill--review">5 ads</span></span>
+                <span class="attn__body">
+                  <span class="attn__title">Creative rejected by Google</span>
+                  <span class="attn__desc">Policy: unsupported claim, on Shopping &mdash; Trail Footwear. Oldest rejection is 4 days old.</span>
+                </span>
+                <a class="attn__go" href="#" data-say="Opening the 5 rejected ads" role="button">Fix creative <span aria-hidden="true">&rsaquo;</span></a>
               </div>
-              <div>
-                <p class="proj__label">Total spend</p>
-                <p class="proj__value">Unchanged</p>
+              <div class="attn__row">
+                <span class="attn__tag"><span class="pill pill--plain">12 ads</span></span>
+                <span class="attn__body">
+                  <span class="attn__title">Creative fatigue on Meta</span>
+                  <span class="attn__desc">Frequency above 3.2 on Fall Trail Collection &mdash; Prospecting for six days running</span>
+                </span>
+                <a class="attn__go" href="#" data-say="Opening the fatigued creative set" role="button">See creatives <span aria-hidden="true">&rsaquo;</span></a>
               </div>
-            </div>
-          </div>
-
-          <div class="card__foot">
-            <span>Projected over the next 14 days from 90 days of account history, assuming 18% efficiency decay as retargeting scales. Re-checked every 6 hours.</span>
-            <span class="ai-panel__actions">
-              <button class="btn btn--ai" id="applyPlan" type="button">Apply plan</button>
-              <button class="btn btn--ghost" id="dismissPlan" type="button">Dismiss</button>
-            </span>
-          </div>
+              <div class="attn__row">
+                <span class="attn__tag"><span class="pill pill--plain">4 audiences</span></span>
+                <span class="attn__body">
+                  <span class="attn__title">Lookalike sources below threshold</span>
+                  <span class="attn__desc">Under 100 matched records, so Meta will not rebuild these until the source grows</span>
+                </span>
+                <a class="attn__go" href="#" data-say="Opening the four thin audiences" role="button">Review audiences <span aria-hidden="true">&rsaquo;</span></a>
+              </div>
+              <div class="attn__row">
+                <span class="attn__tag"><span class="pill pill--plain">$312</span></span>
+                <span class="attn__body">
+                  <span class="attn__title">Unbilled spend on a closed month</span>
+                  <span class="attn__desc">August reconciliation is short by $312 across TikTok and LinkedIn</span>
+                </span>
+                <a class="attn__go" href="#" data-say="Opening August reconciliation" role="button">Reconcile <span aria-hidden="true">&rsaquo;</span></a>
+              </div>
         </section>
+      </div>
 
-        <!-- Top campaigns -->
-        <section class="card" aria-labelledby="camp-h">
+      <!-- ===== Activity ===== -->
+      <div id="p-act" role="tabpanel" aria-labelledby="t-act" class="hidden">
+        <section class="card">
           <div class="card__head">
-            <div>
-              <h2 class="card__title" id="camp-h">Top campaigns</h2>
-              <p class="card__sub">By spend, last 30 days</p>
-            </div>
+            <div><h2 class="card__title">Recent activity</h2><p class="card__sub">Every change across the workspace, newest first</p></div>
+            <button class="btn btn--ghost" type="button" data-say="Exporting the activity log">Export log</button>
           </div>
-          <div class="tablewrap" tabindex="0" role="region" aria-labelledby="camp-h">
-            <table class="table">
-              <thead>
-                <tr>
-                  <th scope="col" class="name">Campaign</th>
-                  <th scope="col">Platform</th>
-                  <th scope="col">Status</th>
-                  <th scope="col" class="num">Spend</th>
-                  <th scope="col" class="num">Conversions</th>
-                  <th scope="col" class="num">Cost per conv.</th>
-                  <th scope="col" class="num">ROAS</th>
-                  <th scope="col" class="num">vs prev.</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td class="name">Fall Trail Collection — Prospecting</td>
-                  <td><span class="plat"><span class="plat__dot plat__dot--meta" aria-hidden="true"></span>Meta</span></td>
-                  <td><span class="badge badge--active">Active</span></td>
-                  <td class="num">$8,942</td>
-                  <td class="num">528</td>
-                  <td class="num">$16.94</td>
-                  <td class="num">4.61x</td>
-                  <td class="num"><span class="delta delta--good"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg>0.41x</span></td>
-                </tr>
-                <tr>
-                  <td class="name">Search — Branded Terms (Exact)</td>
-                  <td><span class="plat"><span class="plat__dot plat__dot--google" aria-hidden="true"></span>Google</span></td>
-                  <td><span class="badge badge--active">Active</span></td>
-                  <td class="num">$6,318</td>
-                  <td class="num">471</td>
-                  <td class="num">$13.41</td>
-                  <td class="num">5.12x</td>
-                  <td class="num"><span class="delta delta--good"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg>0.18x</span></td>
-                </tr>
-                <tr>
-                  <td class="name">Retargeting — Cart Abandoners 14d</td>
-                  <td><span class="plat"><span class="plat__dot plat__dot--meta" aria-hidden="true"></span>Meta</span></td>
-                  <td><span class="badge badge--active">Active</span></td>
-                  <td class="num">$4,706</td>
-                  <td class="num">402</td>
-                  <td class="num">$11.71</td>
-                  <td class="num">6.08x</td>
-                  <td class="num"><span class="delta delta--good"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg>0.94x</span></td>
-                </tr>
-                <tr>
-                  <td class="name">Creator Seeding — Q3 Hiking</td>
-                  <td><span class="plat"><span class="plat__dot plat__dot--tiktok" aria-hidden="true"></span>TikTok</span></td>
-                  <td><span class="badge badge--learning">Learning</span></td>
-                  <td class="num">$3,180</td>
-                  <td class="num">138</td>
-                  <td class="num">$23.04</td>
-                  <td class="num">2.94x</td>
-                  <td class="num"><span class="delta delta--bad"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg>0.22x</span></td>
-                </tr>
-                <tr>
-                  <td class="name">Performance Max — Outerwear</td>
-                  <td><span class="plat"><span class="plat__dot plat__dot--google" aria-hidden="true"></span>Google</span></td>
-                  <td><span class="badge badge--paused">Paused</span></td>
-                  <td class="num">$2,864</td>
-                  <td class="num">149</td>
-                  <td class="num">$19.22</td>
-                  <td class="num">3.38x</td>
-                  <td class="num"><span class="delta delta--bad"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg>0.57x</span></td>
-                </tr>
-                <tr>
-                  <td class="name">Lead Gen — Outfitter Partners</td>
-                  <td><span class="plat"><span class="plat__dot plat__dot--linkedin" aria-hidden="true"></span>LinkedIn</span></td>
-                  <td><span class="badge badge--review">In review</span></td>
-                  <td class="num">$2,415</td>
-                  <td class="num">96</td>
-                  <td class="num">$25.16</td>
-                  <td class="num">3.12x</td>
-                  <td class="num"><span class="delta delta--good"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg>0.09x</span></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="card__foot">
-            <span>Top 6 by spend of 23 campaigns running in the last 30 days.</span>
-          </div>
-        </section>
-      </div>
-
-      <!-- ===================== LOADING ===================== -->
-      <div id="view-loading" class="stack-4 hidden" aria-busy="true" aria-live="polite">
-        <p class="visually-hidden">Loading your dashboard.</p>
-        <div class="kpis">
-          <article class="card kpi"><span class="skel skel--text" style="width:44%"></span><span class="skel skel--metric" style="width:66%"></span><span class="skel skel--text" style="width:52%"></span></article>
-          <article class="card kpi"><span class="skel skel--text" style="width:38%"></span><span class="skel skel--metric" style="width:72%"></span><span class="skel skel--text" style="width:52%"></span></article>
-          <article class="card kpi"><span class="skel skel--text" style="width:50%"></span><span class="skel skel--metric" style="width:48%"></span><span class="skel skel--text" style="width:52%"></span></article>
-          <article class="card kpi"><span class="skel skel--text" style="width:42%"></span><span class="skel skel--metric" style="width:58%"></span><span class="skel skel--text" style="width:52%"></span></article>
-          <article class="card kpi"><span class="skel skel--text" style="width:56%"></span><span class="skel skel--metric" style="width:54%"></span><span class="skel skel--text" style="width:60%"></span></article>
-          <article class="card kpi"><span class="skel skel--text" style="width:48%"></span><span class="skel skel--metric" style="width:50%"></span><span class="skel skel--text" style="width:52%"></span></article>
-        </div>
-
-        <div class="grid-2">
-          <section class="card">
-            <div class="card__head"><div class="stack-2" style="width:100%"><span class="skel skel--text" style="width:190px"></span><span class="skel skel--text" style="width:240px;height:12px"></span></div></div>
-            <div class="card__body"><span class="skel skel--chart" style="display:block"></span></div>
-          </section>
-          <section class="card">
-            <div class="card__head"><div class="stack-2" style="width:100%"><span class="skel skel--text" style="width:160px"></span><span class="skel skel--text" style="width:110px;height:12px"></span></div></div>
-            <div class="card__body stack-4">
-              <div class="stack-2"><span class="skel skel--text" style="width:80%"></span><span class="skel" style="height:12px"></span></div>
-              <div class="stack-2"><span class="skel skel--text" style="width:70%"></span><span class="skel" style="height:12px;width:66%"></span></div>
-              <div class="stack-2"><span class="skel skel--text" style="width:62%"></span><span class="skel" style="height:12px;width:36%"></span></div>
-              <div class="stack-2"><span class="skel skel--text" style="width:66%"></span><span class="skel" style="height:12px;width:25%"></span></div>
-            </div>
-          </section>
-        </div>
-
-        <section class="card">
-          <div class="card__head"><div class="stack-2" style="width:100%"><span class="skel skel--text" style="width:150px"></span><span class="skel skel--text" style="width:200px;height:12px"></span></div></div>
-          <div class="card__body stack-3">
-            <span class="skel skel--text"></span>
-            <span class="skel skel--text"></span>
-            <span class="skel skel--text" style="width:82%"></span>
-            <span class="skel skel--text" style="width:64%"></span>
-          </div>
-        </section>
-      </div>
-
-      <!-- ===================== EMPTY ===================== -->
-      <div id="view-empty" class="hidden">
-        <section class="card">
           <div class="card__body">
-            <div class="empty">
-              <span class="empty__icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3v5M15 3v5M6 8h12v5a6 6 0 01-12 0z"/><path d="M12 19v2"/></svg>
-              </span>
-              <h2>No ad accounts connected yet</h2>
-              <p>
-                Connect Meta, Google, TikTok or LinkedIn and Advertix pulls in the last
-                90 days of spend, conversions and creative performance. The first sync
-                usually finishes in under two minutes.
-              </p>
-              <div class="empty__actions">
-                <button class="btn btn--primary" id="connectAccount" type="button">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
-                  Connect an ad account
-                </button>
-                <button class="btn btn--secondary" id="importCsv" type="button">Import a CSV instead</button>
-              </div>
-              <p class="u-small u-faint">Advertix only ever requests read and campaign-management scopes. You can revoke access at any time.</p>
+            <div class="feed">
+            <div class="feed__row"><span class="feed__when">Sep 18</span><span class="feed__what">Daily budget raised on <b>Fall Trail Collection &mdash; Prospecting</b>, $280 &rarr; $320, by Dana Whitfield</span></div>
+            <div class="feed__row"><span class="feed__when">Sep 18</span><span class="feed__what"><b>Winter Preview &mdash; Broad Interest</b> passed 125% of daily budget &mdash; pacing alert sent</span></div>
+            <div class="feed__row"><span class="feed__when">Sep 17</span><span class="feed__what">3 creatives approved on <b>Retargeting &mdash; Cart Abandoners 14d</b></span></div>
+            <div class="feed__row"><span class="feed__when">Sep 17</span><span class="feed__what">Google rejected 5 ads on <b>Shopping &mdash; Trail Footwear</b> &mdash; policy <span class="mono">UNSUPPORTED_CLAIM</span></span></div>
+            <div class="feed__row"><span class="feed__when">Sep 16</span><span class="feed__what"><b>Creator Seeding &mdash; Q3 Hiking</b> left the learning phase on 2 of 4 ad sets</span></div>
+            <div class="feed__row"><span class="feed__when">Sep 16</span><span class="feed__what">AI Planner proposed moving $600/day into retargeting &mdash; awaiting a decision</span></div>
+            <div class="feed__row"><span class="feed__when">Sep 15</span><span class="feed__what">Meta sync completed &mdash; 23 campaigns, 61 ad sets, 148 ads</span></div>
             </div>
           </div>
         </section>
       </div>
-
-      <!-- ===================== ERROR ===================== -->
-      <div id="view-error" class="hidden">
-        <section class="card">
-          <div class="card__body">
-            <div class="errorstate">
-              <span class="errorstate__icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8v5M12 16.5v.01"/><path d="M10.3 3.9L2.5 17a2 2 0 001.7 3h15.6a2 2 0 001.7-3L13.7 3.9a2 2 0 00-3.4 0z"/></svg>
-              </span>
-              <h2>We couldn't load your Meta numbers</h2>
-              <p>
-                Meta is rate-limiting this ad account, so the totals on this page would
-                be wrong — we'd rather show you nothing than the wrong number. Google,
-                TikTok and LinkedIn synced normally at 09:42.
-              </p>
-              <p class="errorcode">Meta Marketing API · error 613 · act_418822907 · 09:47</p>
-              <div class="errorstate__actions">
-                <button class="btn btn--primary" id="retryBtn" type="button">Try again</button>
-                <button class="btn btn--secondary" id="copyError" type="button">Copy error details</button>
-              </div>
-              <p class="u-small u-faint">Advertix retries on its own every 5 minutes. Meta usually lifts a 613 within the hour.</p>
-            </div>
-          </div>
-        </section>
-      </div>
-
     </main>
   </div>
 </div>
 
+<div class="menu" id="dm0" hidden role="menu">
+  <button class="menu__item" type="button" role="menuitem" data-say="Opening the campaign editor">Edit campaign</button>
+  <button class="menu__item" type="button" role="menuitem" data-say="Campaign paused">Pause campaign</button>
+  <button class="menu__item" type="button" role="menuitem" data-say="Campaign duplicated as a draft">Duplicate</button>
+  <div class="menu__sep"></div>
+  <button class="menu__item menu__item--danger" type="button" role="menuitem" data-say="Campaign archived">Archive</button>
+</div>
+<div class="menu" id="dm1" hidden role="menu">
+  <button class="menu__item" type="button" role="menuitem" data-say="Opening the campaign editor">Edit campaign</button>
+  <button class="menu__item" type="button" role="menuitem" data-say="Campaign paused">Pause campaign</button>
+  <button class="menu__item" type="button" role="menuitem" data-say="Campaign duplicated as a draft">Duplicate</button>
+  <div class="menu__sep"></div>
+  <button class="menu__item menu__item--danger" type="button" role="menuitem" data-say="Campaign archived">Archive</button>
+</div>
+<div class="menu" id="dm2" hidden role="menu">
+  <button class="menu__item" type="button" role="menuitem" data-say="Opening the campaign editor">Edit campaign</button>
+  <button class="menu__item" type="button" role="menuitem" data-say="Campaign paused">Pause campaign</button>
+  <button class="menu__item" type="button" role="menuitem" data-say="Campaign duplicated as a draft">Duplicate</button>
+  <div class="menu__sep"></div>
+  <button class="menu__item menu__item--danger" type="button" role="menuitem" data-say="Campaign archived">Archive</button>
+</div>
+<div class="menu" id="dm3" hidden role="menu">
+  <button class="menu__item" type="button" role="menuitem" data-say="Opening the campaign editor">Edit campaign</button>
+  <button class="menu__item" type="button" role="menuitem" data-say="Campaign paused">Pause campaign</button>
+  <button class="menu__item" type="button" role="menuitem" data-say="Campaign duplicated as a draft">Duplicate</button>
+  <div class="menu__sep"></div>
+  <button class="menu__item menu__item--danger" type="button" role="menuitem" data-say="Campaign archived">Archive</button>
+</div>
+<div class="menu" id="dm4" hidden role="menu">
+  <button class="menu__item" type="button" role="menuitem" data-say="Opening the campaign editor">Edit campaign</button>
+  <button class="menu__item" type="button" role="menuitem" data-say="Resume campaignd">Resume campaign</button>
+  <button class="menu__item" type="button" role="menuitem" data-say="Campaign duplicated as a draft">Duplicate</button>
+  <div class="menu__sep"></div>
+  <button class="menu__item menu__item--danger" type="button" role="menuitem" data-say="Campaign archived">Archive</button>
+</div>
 <div class="toast" id="toast" role="status" aria-live="polite">
   <span class="toast__dot" aria-hidden="true"></span>
-  <span id="toastText">Plan applied</span>
+  <span id="toastText">Saved</span>
 </div>
 
 <script>
 (function () {
   "use strict";
+
   var root = document.documentElement;
   var $ = function (id) { return document.getElementById(id); };
 
-  /* ---------- Theme ---------- */
+  /* Theme */
   var themeBtn = $("themeToggle");
-  var sun = themeBtn.querySelector(".icon-sun");
-  var moon = themeBtn.querySelector(".icon-moon");
-
   function paintTheme() {
     var dark = root.getAttribute("data-theme") === "dark";
-    sun.classList.toggle("hidden", dark);
-    moon.classList.toggle("hidden", !dark);
+    themeBtn.querySelector(".icon-sun").classList.toggle("hidden", dark);
+    themeBtn.querySelector(".icon-moon").classList.toggle("hidden", !dark);
     themeBtn.setAttribute("aria-label", dark ? "Switch to light theme" : "Switch to dark theme");
   }
   themeBtn.addEventListener("click", function () {
@@ -750,181 +607,180 @@
   });
   paintTheme();
 
-  /* ---------- Off-canvas navigation ---------- */
-  var navToggle = $("navToggle");
-  var scrim = $("scrim");
-  var rail = $("rail");
-
+  /* Off-canvas navigation */
+  var navToggle = $("navToggle"), scrim = $("scrim"), rail = $("rail");
   function setNav(open) {
     root.setAttribute("data-nav", open ? "open" : "closed");
     navToggle.setAttribute("aria-expanded", String(open));
     navToggle.setAttribute("aria-label", open ? "Close navigation" : "Open navigation");
     scrim.hidden = !open;
-    if (open) { rail.querySelector("a, button").focus(); } else { navToggle.focus(); }
+    (open ? rail.querySelector("a, button") : navToggle).focus();
   }
-  navToggle.addEventListener("click", function () {
-    setNav(root.getAttribute("data-nav") !== "open");
-  });
+  navToggle.addEventListener("click", function () { setNav(root.getAttribute("data-nav") !== "open"); });
   scrim.addEventListener("click", function () { setNav(false); });
-  document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape" && root.getAttribute("data-nav") === "open") { setNav(false); }
-  });
 
-  /* ---------- Toast ---------- */
-  var toast = $("toast");
-  var toastText = $("toastText");
-  var toastTimer;
+  /* Toast */
+  var toast = $("toast"), toastText = $("toastText"), toastTimer;
   function say(msg) {
     toastText.textContent = msg;
     toast.setAttribute("data-show", "true");
     clearTimeout(toastTimer);
-    toastTimer = setTimeout(function () { toast.removeAttribute("data-show"); }, 3200);
+    toastTimer = setTimeout(function () { toast.removeAttribute("data-show"); }, 3000);
   }
 
-  /* ---------- Page state (mockup control) ---------- */
+  /* Row menus — one open at a time, click-away and Escape close it. */
+  var openMenu = null;
+  function closeMenu() { if (openMenu) { openMenu.hidden = true; openMenu.__btn.setAttribute("aria-expanded", "false"); openMenu = null; } }
+  Array.prototype.forEach.call(document.querySelectorAll("[data-menu]"), function (btn) {
+    var menu = document.getElementById(btn.getAttribute("data-menu"));
+    if (!menu) { return; }
+    menu.__btn = btn;
+    btn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      var wasOpen = !menu.hidden;
+      closeMenu();
+      if (!wasOpen) {
+        var r = btn.getBoundingClientRect();
+        menu.style.top = (window.scrollY + r.bottom + 4) + "px";
+        menu.style.left = (window.scrollX + r.right - menu.offsetWidth) + "px";
+        menu.hidden = false;
+        btn.setAttribute("aria-expanded", "true");
+        openMenu = menu;
+      }
+    });
+    Array.prototype.forEach.call(menu.querySelectorAll(".menu__item"), function (item) {
+      item.addEventListener("click", function () { closeMenu(); say(item.getAttribute("data-say") || item.textContent.trim()); });
+    });
+  });
+  document.addEventListener("click", closeMenu);
+  document.addEventListener("keydown", function (e) {
+    if (e.key !== "Escape") { return; }
+    if (openMenu) { closeMenu(); }
+    else if (root.getAttribute("data-nav") === "open") { setNav(false); }
+  });
+
+  /* Tabs */
+  Array.prototype.forEach.call(document.querySelectorAll("[role=tablist]"), function (list) {
+    var tabs = Array.prototype.slice.call(list.querySelectorAll("[role=tab]"));
+    function select(tab) {
+      tabs.forEach(function (t) {
+        var on = t === tab;
+        t.setAttribute("aria-selected", String(on));
+        t.tabIndex = on ? 0 : -1;
+        var panel = document.getElementById(t.getAttribute("aria-controls"));
+        if (panel) { panel.classList.toggle("hidden", !on); }
+      });
+    }
+    tabs.forEach(function (tab, i) {
+      tab.addEventListener("click", function () { select(tab); });
+      tab.addEventListener("keydown", function (e) {
+        var d = e.key === "ArrowRight" ? 1 : e.key === "ArrowLeft" ? -1 : 0;
+        if (!d) { return; }
+        e.preventDefault();
+        var next = tabs[(i + d + tabs.length) % tabs.length];
+        next.focus(); select(next);
+      });
+    });
+  });
+
+  /* Select-all checkbox in table headers */
+  Array.prototype.forEach.call(document.querySelectorAll("[data-checkall]"), function (master) {
+    var boxes = Array.prototype.slice.call(document.querySelectorAll("." + master.getAttribute("data-checkall")));
+    master.addEventListener("change", function () {
+      boxes.forEach(function (b) { b.checked = master.checked; });
+      master.indeterminate = false;
+    });
+    boxes.forEach(function (b) {
+      b.addEventListener("change", function () {
+        var n = boxes.filter(function (x) { return x.checked; }).length;
+        master.checked = n === boxes.length;
+        master.indeterminate = n > 0 && n < boxes.length;
+      });
+    });
+  });
+
+  /* Anything marked data-say is wired, so no control on these pages is dead. */
+  Array.prototype.forEach.call(document.querySelectorAll("[data-say]:not(.menu__item)"), function (el) {
+    el.addEventListener("click", function () { say(el.getAttribute("data-say")); });
+  });
+
+
+  /* Page state (mockup control) */
   var views = { ready: $("view-ready"), loading: $("view-loading"), empty: $("view-empty"), error: $("view-error") };
-  var stateSelect = $("stateSelect");
-  var createBtn = $("createCampaign");
-
-  var syncStatus = $("syncStatus");
-  var STATUS = {
-    ready:   { text: "All platforms syncing", cls: "badge--active",   title: "All four ad accounts are syncing normally" },
-    loading: { text: "Refreshing",            cls: "badge--review",   title: "Pulling the latest numbers from each platform" },
-    empty:   { text: "No accounts",           cls: "badge--draft",    title: "Nothing to sync until an ad account is connected" },
-    error:   { text: "Meta sync failed",      cls: "badge--rejected", title: "Meta is rate-limiting this ad account" }
+  var stateSelect = $("stateSelect"), headMeta = $("headMeta");
+  var META = {
+    ready:   "23 campaigns live \u00b7 $1,975 spent so far today \u00b7 3 things need a decision",
+    loading: "Refreshing from Meta, Google, TikTok and LinkedIn\u2026",
+    empty:   "No ad accounts connected yet",
+    error:   "Meta did not respond \u2014 the totals below would be wrong, so they are hidden"
   };
-
   function setState(name) {
     Object.keys(views).forEach(function (k) { views[k].classList.toggle("hidden", k !== name); });
     if (stateSelect.value !== name) { stateSelect.value = name; }
-
-    // The top bar must never claim everything is fine while the page says otherwise.
-    var st = STATUS[name];
-    syncStatus.className = "badge topbar__status " + st.cls;
-    syncStatus.textContent = st.text;
-    syncStatus.title = st.title;
-
-    // An empty account has nothing to have synced, and no accounts to count.
-    $("acctMeta").textContent = name === "empty" ? "No ad accounts" : "4 ad accounts";
-    $("syncedAt").classList.toggle("hidden", name === "empty");
-
-    // "Create campaign" only means something once there is an account with data.
-    var live = name === "ready";
-    createBtn.disabled = !live;
-    createBtn.title = live ? "" : "Available once your ad accounts have synced";
+    headMeta.textContent = META[name];
   }
   stateSelect.addEventListener("change", function () { setState(stateSelect.value); });
+  function loadThen(name, ms) { setState("loading"); setTimeout(function () { setState(name); }, ms); }
 
-  function loadThen(name, ms) {
-    setState("loading");
-    setTimeout(function () { setState(name); }, ms || 1100);
-  }
-
-  $("refreshBtn").addEventListener("click", function () {
-    loadThen("ready", 1100);
-    $("syncedAt").textContent = "Synced just now";
-  });
-  $("retryBtn").addEventListener("click", function () { loadThen("ready", 1400); });
-  $("copyError").addEventListener("click", function () {
-    var detail = "Advertix dashboard — Meta Marketing API error 613 (rate limit), account act_418822907, 2026-09-18 09:47 UTC";
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(detail).then(function () { say("Error details copied"); });
-    } else {
-      say("Error details copied");
-    }
-  });
+  $("refreshBtn").addEventListener("click", function () { loadThen("ready", 1000); });
+  $("retryBtn").addEventListener("click", function () { loadThen("ready", 1300); });
   $("connectAccount").addEventListener("click", function () { say("Opening the platform picker"); });
-  $("importCsv").addEventListener("click", function () { say("Opening the CSV importer"); });
-  createBtn.addEventListener("click", function () { say("Opening the campaign builder"); });
+  $("copyError").addEventListener("click", function () {
+    var t = "Advertix - Meta Marketing API error 613 (rate limit), act_418822907, 2026-09-18 09:47 UTC";
+    if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(t).then(function () { say("Error details copied"); }); }
+    else { say("Error details copied"); }
+  });
 
-  /* ---------- AI Planner ---------- */
   var aiPanel = $("aiPanel");
-  $("applyPlan").addEventListener("click", function () {
-    say("Plan applied — budgets update within 15 minutes");
-    aiPanel.classList.add("hidden");
-  });
-  $("dismissPlan").addEventListener("click", function () {
-    say("Suggestion dismissed — AI Planner will re-check in 6 hours");
-    aiPanel.classList.add("hidden");
-  });
+  $("applyPlan").addEventListener("click", function () { say("Plan applied \u2014 budgets update within 15 minutes"); aiPanel.classList.add("hidden"); });
+  $("dismissPlan").addEventListener("click", function () { say("Suggestion dismissed \u2014 AI Planner re-checks in 6 hours"); aiPanel.classList.add("hidden"); });
 
-  /* ---------- Data table toggle ---------- */
-  var tableToggle = $("tableToggle");
-  var trendTable = $("trendTable");
+  var tableToggle = $("tableToggle"), trendTable = $("trendTable");
   tableToggle.addEventListener("click", function () {
     var open = trendTable.classList.toggle("hidden") === false;
     tableToggle.setAttribute("aria-expanded", String(open));
     tableToggle.textContent = open ? "Hide data table" : "Show data table";
   });
 
-  /* ---------- Chart crosshair + tooltip ---------- */
-  var chart = $("trendChart");
-  var scroll = $("chartScroll");
-  var tip = $("tip");
-  var crosshair = $("crosshair");
-  var focusSpend = $("focusSpend");
-  var focusConv = $("focusConv");
+  /* Chart crosshair */
+  var chart = $("trendChart"), scroll = $("chartScroll"), tip = $("tip");
+  var crosshair = $("crosshair"), fS = $("focusSpend"), fC = $("focusConv");
   var hits = Array.prototype.slice.call(document.querySelectorAll("#hits .hit"));
   var active = -1;
-
-  var money = function (n) { return "$" + Number(n).toLocaleString("en-US"); };
-
   function show(i) {
-    var h = hits[i];
-    if (!h) { return; }
+    var h = hits[i]; if (!h) { return; }
     active = i;
     var cx = parseFloat(h.getAttribute("data-cx"));
-    crosshair.setAttribute("x1", cx);
-    crosshair.setAttribute("x2", cx);
-    focusSpend.setAttribute("cx", cx);
-    focusSpend.setAttribute("cy", h.getAttribute("data-ay"));
-    focusConv.setAttribute("cx", cx);
-    focusConv.setAttribute("cy", h.getAttribute("data-by"));
+    crosshair.setAttribute("x1", cx); crosshair.setAttribute("x2", cx);
+    fS.setAttribute("cx", cx); fS.setAttribute("cy", h.getAttribute("data-ay"));
+    fC.setAttribute("cx", cx); fC.setAttribute("cy", h.getAttribute("data-by"));
     chart.classList.add("is-active");
-
-    var spend = Number(h.getAttribute("data-spend"));
-    var conv = Number(h.getAttribute("data-conv"));
-    tip.innerHTML =
-      '<p class="tip__date">' + h.getAttribute("data-date") + "</p>" +
-      '<p class="tip__row"><span>Spend</span><b>' + money(spend) + "</b></p>" +
-      '<p class="tip__row"><span>Conversions</span><b>' + conv + "</b></p>" +
-      '<p class="tip__row"><span>Cost per conv.</span><b>$' + (spend / conv).toFixed(2) + "</b></p>";
-
-    // Place the tip over the chart in pixel space, clamped inside the frame.
-    var box = h.getBoundingClientRect();
-    var frame = scroll.getBoundingClientRect();
+    var sp = Number(h.getAttribute("data-spend")), cv = Number(h.getAttribute("data-conv"));
+    tip.innerHTML = '<p class="tip__date">' + h.getAttribute("data-date") + '</p>'
+      + '<p class="tip__row"><span>Spend</span><b>$' + sp.toLocaleString("en-US") + '</b></p>'
+      + '<p class="tip__row"><span>Conversions</span><b>' + cv + '</b></p>'
+      + '<p class="tip__row"><span>Cost per conv.</span><b>$' + (sp / cv).toFixed(2) + '</b></p>';
+    var box = h.getBoundingClientRect(), frame = scroll.getBoundingClientRect();
     var x = box.left - frame.left + scroll.scrollLeft + box.width / 2;
     tip.setAttribute("data-side", x > frame.width / 2 ? "left" : "right");
-    tip.style.left = x + "px";
-    tip.style.top = "6px";
+    tip.style.left = x + "px"; tip.style.top = "6px";
     tip.setAttribute("data-show", "true");
   }
-
-  function hide() {
-    active = -1;
-    chart.classList.remove("is-active");
-    tip.removeAttribute("data-show");
-  }
-
-  hits.forEach(function (h, i) {
-    h.addEventListener("mouseenter", function () { show(i); });
-    h.addEventListener("focus", function () { show(i); });
-  });
+  function hide() { active = -1; chart.classList.remove("is-active"); tip.removeAttribute("data-show"); }
+  hits.forEach(function (h, i) { h.addEventListener("mouseenter", function () { show(i); }); });
   chart.addEventListener("mouseleave", hide);
-  chart.addEventListener("blur", hide);
-
-  // Keyboard: focus the chart, then step through days with the arrow keys.
   chart.setAttribute("tabindex", "0");
   chart.addEventListener("keydown", function (e) {
     if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
       e.preventDefault();
-      var next = active === -1 ? (e.key === "ArrowRight" ? 0 : hits.length - 1)
-                               : active + (e.key === "ArrowRight" ? 1 : -1);
-      show(Math.max(0, Math.min(hits.length - 1, next)));
-    } else if (e.key === "Escape") {
-      hide();
-    }
+      var n = active === -1 ? (e.key === "ArrowRight" ? 0 : hits.length - 1) : active + (e.key === "ArrowRight" ? 1 : -1);
+      show(Math.max(0, Math.min(hits.length - 1, n)));
+    } else if (e.key === "Escape") { hide(); }
   });
+  chart.addEventListener("blur", hide);
+
+  /* The overview shows the top three; this jumps to the full list. */
+  $("seeAllAttn").addEventListener("click", function () { $("t-attn").click(); $("t-attn").focus(); });
 
   setState("ready");
 })();

@@ -486,7 +486,8 @@ button, input, select, textarea { font: inherit; color: inherit; }
 /* ---- 11. Cards ---------------------------------------------------------- */
 .card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-card); }
 .card__head {
-  display: flex; align-items: center; justify-content: space-between; gap: var(--s4);
+  display: flex; align-items: center; justify-content: space-between;
+  gap: var(--s3) var(--s4); flex-wrap: wrap;
   padding: var(--s4); border-bottom: 1px solid var(--line);
 }
 .card__head--plain { border-bottom: 0; padding-bottom: 0; }
@@ -582,6 +583,39 @@ button, input, select, textarea { font: inherit; color: inherit; }
   .stat:first-child { border-top: 0; }
 }
 
+/* Counter cards — label, value, change chip, a 12-period mini chart, and the
+   figure being compared against. One card per measure, not a joined strip. */
+.counters { display: grid; grid-template-columns: repeat(auto-fit, minmax(238px, 1fr)); gap: var(--s4); }
+.counter { display: flex; flex-direction: column; gap: var(--s3); padding: var(--s4); }
+.counter__label { font-size: var(--fs-small); font-weight: 600; color: var(--ink-2); }
+.counter__figure { display: flex; align-items: center; gap: var(--s2); flex-wrap: wrap; min-width: 0; }
+.counter__value { font-size: var(--fs-metric); font-weight: 600; letter-spacing: -0.02em; line-height: 1.05; }
+.counter__foot {
+  display: flex; align-items: center; justify-content: space-between; gap: var(--s3);
+  margin-top: auto; padding-top: var(--s3); border-top: 1px solid var(--line);
+  font-size: var(--fs-micro); color: var(--ink-3);
+}
+.counter__foot b { color: var(--ink-2); font-weight: 600; font-variant-numeric: tabular-nums; }
+
+/* Change chip. Keeps the arrow as well as the colour, so the direction still
+   reads without it. */
+.chip {
+  display: inline-flex; align-items: center; gap: 3px; white-space: nowrap;
+  padding: 2px 8px; border-radius: var(--r-pill);
+  font-size: var(--fs-micro); font-weight: 600; font-variant-numeric: tabular-nums;
+}
+.chip svg { width: 12px; height: 12px; }
+.chip--up { background: var(--positive-soft); color: var(--positive); }
+.chip--down { background: var(--risk-soft); color: var(--risk); }
+.chip--flat { background: var(--neutral-soft); color: var(--ink-2); }
+
+/* 12-period mini chart. The final bar is the current period. */
+/* Full-width, so the 12 periods are readable rather than hairlines. Bars are
+   rectangles, so stretching them horizontally costs nothing. */
+.sparkbar { display: block; width: 100%; height: 34px; }
+.sparkbar rect { fill: var(--series-1); opacity: 0.28; }
+.sparkbar rect.is-now { opacity: 1; }
+
 /* ---- 15. Attention list ------------------------------------------------- */
 /* The one block that earns the top of the dashboard: things that block work. */
 .attn__row {
@@ -602,6 +636,21 @@ button, input, select, textarea { font: inherit; color: inherit; }
   .attn__body { flex-basis: 100%; order: 3; }
   .attn__go { margin-left: auto; }
 }
+
+/* Slim inline notice — one line, one action. */
+.notice {
+  display: flex; align-items: center; gap: var(--s3); flex-wrap: wrap;
+  padding: 10px var(--s4); border: 1px solid var(--line);
+  border-radius: var(--r-card); background: var(--surface); font-size: var(--fs-small);
+}
+.notice__icon { flex: 0 0 auto; width: 18px; height: 18px; }
+.notice__text { color: var(--ink); min-width: 0; }
+.notice__text b { font-weight: 600; }
+.notice--warn { background: var(--warning-soft); border-color: color-mix(in srgb, var(--warning) 28%, var(--line)); }
+.notice--warn .notice__icon { color: var(--warning); }
+.notice--risk { background: var(--risk-soft); border-color: color-mix(in srgb, var(--risk) 28%, var(--line)); }
+.notice--risk .notice__icon { color: var(--risk); }
+.notice__go { margin-left: auto; font-weight: 600; white-space: nowrap; }
 
 /* ---- 16. Detail layout -------------------------------------------------- */
 .split { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: var(--s4); align-items: start; }
@@ -657,7 +706,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
 
 /* ---- 19. Charts --------------------------------------------------------- */
 .chart-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; position: relative; }
-.chart { display: block; width: 100%; min-width: 560px; height: auto; }
+.chart { display: block; width: 100%; min-width: 520px; height: auto; }
 .chart .grid-line { stroke: var(--grid); stroke-width: 1; shape-rendering: crispEdges; }
 .chart .axis-text { fill: var(--ink-3); font-family: var(--font); font-size: 15px; font-variant-numeric: tabular-nums; }
 .chart .panel-text { fill: var(--ink-2); font-family: var(--font); font-size: 15px; font-weight: 600; }

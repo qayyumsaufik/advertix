@@ -1,0 +1,34 @@
+import { Router } from "express";
+import authRouter from "./auth";
+import campaignRouter from "./campaigns";
+import analyticsRouter from "./analytics";
+import aiRouter from "./ai";
+import adAccountRouter from "./ad-accounts";
+import creativeRouter from "./creatives";
+import audienceRouter from "./audiences";
+import budgetOptimizerRouter from "./budget-optimizer";
+import insightsRouter from "./insights";
+import workspaceRouter from "./workspace";
+import metaRouter from "./meta";
+import googleRouter from "./google";
+import tiktokRouter from "./tiktok";
+import linkedinRouter from "./linkedin";
+
+const router = Router();
+
+router.use("/auth", authRouter);
+router.use("/campaigns", campaignRouter);
+router.use("/analytics", analyticsRouter);
+router.use("/ai", aiRouter);
+router.use("/ad-accounts", adAccountRouter);
+router.use("/creatives", creativeRouter);
+router.use("/audiences", audienceRouter);
+router.use("/budget-optimizer", budgetOptimizerRouter);
+router.use("/insights", insightsRouter);
+router.use("/workspace", workspaceRouter);
+router.use("/meta", metaRouter);
+router.use("/google", googleRouter);
+router.use("/tiktok", tiktokRouter);
+router.use("/linkedin", linkedinRouter);
+
+export default router;
